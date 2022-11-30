@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+
+
 //
 
 public class price_financial {
@@ -31,10 +33,11 @@ public class price_financial {
                 dart_code = "0" + dart_code;
             }
         }
-        //FINANCIAL
-        URL url1 = new URL("https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=8b84c49305eb0a97b4729cdc268004cb2b41ae36&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs);
-        //PRICE
-        URL url2 = new URL("https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=esy%2BILqhjceVIiQy96oHrDjiEKhM9TVTNUIovRo954WK32I1pCD8QkU6PVbIRrxa5R9mUYJo9y7fiKde77op5w%3D%3D&resultType=json&likeSrtnCd="+short_code);
+        //URL
+        String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=8b84c49305eb0a97b4729cdc268004cb2b41ae36&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
+        String url_plus2 = "http://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=esy%2BILqhjceVIiQy96oHrDjiEKhM9TVTNUIovRo954WK32I1pCD8QkU6PVbIRrxa5R9mUYJo9y7fiKde77op5w%3D%3D&resultType=json&likeSrtnCd="+short_code;
+        URL url1 = new URL(url_plus1);
+        URL url2 = new URL(url_plus2);
         //
         BufferedReader bf1;
         BufferedReader bf2;
@@ -52,17 +55,18 @@ public class price_financial {
         JSONObject response = (JSONObject)myjson2.get("response");
         JSONObject body = (JSONObject)response.get("body");
         JSONObject items = (JSONObject)body.get("items");
-        JSONArray value2 = (JSONArray)items.get("item");
+        JSONArray item = (JSONArray)items.get("item");
+        JSONObject value2 = (JSONObject)item.get(0);
         // Financial JASON
         var value1_status = myjson1.get("status");
         //
         var arr = new ArrayList<>();
         //
-        arr.add(((JSONObject)value2.get(0)).get("basD")); // 시간 basDt
-        arr.add(((JSONObject)value2.get(5)).get("clpr")); // 종가 clpr
-        arr.add(((JSONObject)value2.get(11)).get("trqu")); // 거래량 trqu
-        arr.add(((JSONObject)value2.get(14)).get("mrktTotAmt")); // 시가총액 mrktTotAmt
-        arr.add(((JSONObject)value2.get(13)).get("lstgStCnt")); // 상장좌수 lstgStCnt
+        arr.add(value2.get("basDt")); // 시간 basDt
+        arr.add(value2.get("clpr")); // 종가 clpr
+        arr.add(value2.get("trqu")); // 거래량 trqu
+        arr.add(value2.get("mrktTotAmt")); // 시가총액 mrktTotAmt
+        arr.add(value2.get("lstgStCnt")); // 상장좌수 lstgStCnt
         //
         if(value1_status == "000"){
             for(var i = 0; i < value1.size(); i++){
@@ -80,5 +84,7 @@ public class price_financial {
             System.out.println(arr.get(i));
         }
     }
+    //
+    //
 
 }
