@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 
 //
@@ -21,7 +23,7 @@ public class price_financial {
     private final String fs = "CFS";
     private String response1 = "";
     private String response2 = "";
-
+    public static HashSet<String> jong_bok = new HashSet<>();
     public void price_financial(String dart_code, String short_code) throws IOException, ParseException {
         if(short_code == null){
             dart_code = "244455"; // 삼성전자
@@ -72,6 +74,7 @@ public class price_financial {
         if(value1_status.equals("000")){
             for(var i = 0; i < value1.size(); i++){
                 arr.add(((JSONObject)value1.get(i)).get("account_id") + " " + ((JSONObject)value1.get(i)).get("account_nm") + " " + ((JSONObject)value1.get(i)).get("account_detail"));
+                jong_bok.add(((JSONObject)value1.get(i)).get("account_id") + " " + ((JSONObject)value1.get(i)).get("account_nm") + " " + ((JSONObject)value1.get(i)).get("account_detail"));
                 //arr.add(((JSONObject)value1.get(6)).get("account_id")); // account_id 6
                 //arr.push(((JSONObject)value1.get(7)).get("account_nm")); // account_nm 7
                 //arr.push(((JSONObject)value1.get(8)).get("account_detail")); // account_detail 8
@@ -85,7 +88,4 @@ public class price_financial {
             System.out.println(arr.get(i));
         }
     }
-    //
-    //
-
 }

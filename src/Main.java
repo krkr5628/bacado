@@ -1,20 +1,80 @@
 import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Main {
-    public static String Dart_Code = "126380 1515323 877059 164779 126362 356361 164742 266961 106641 421045 126229	918444 155319 164788	688996	382199	631518	155276	144155	401731	126256	244455	120021	547583	102858	159023	159193	1390344	138279	1133217	139214	126186	186461	159616	162461	760971	164645	126371	261443	113526	356370	375302	149646	105961	360595	583424	635134	1319899	1568413	165413	164830	1244601	1596425	231363	126308	1204056	255619	1205709	309503	105873	126478	878696	500254	164478	161125	145109	1386916	937324	139889	159102	170558	441854	106368	440907	311030	145880	126566	164609	120562	117744	126292	1032486	261285	1263022	854997	860332	828497	164973	120182	138224	140177	113997	432102	104856	124504	148276	302926	983040	670340	120526	165680	163682	159209	872984	1042775	158501	148896	161426	503668	122737	583424	105952	339391	136378	113207	776820	148540	1019032	858364	105271	160588	195229	140955	1412725	296290	111704	113410	120030	124540	160843	150244	108241	113058	427483	141529	106623	120076	105855	1267170	157681	159218	1174773	129679	117188	1316254	117212	1524093	132637	120571	428251	109693	344287	795135	1316227	521220	972503	160047	1172270	114792	137359	520799	164724	131780	115977	992871	557508	161693	293716	117577	234412	426086	481454	1010110	767460	406709	138792	115676	939331	260383	269940	1319808	1508244	108135	121941	684714	231372	162586	123143	1310269	105280	299321	188089	728638	1323032	1009789	133858	1128613	126937	412597	150633";
-    public static String Kospi_Code = "5930	373220	207940	660	6400	51910	5380	35420	270	68270	28260	35720	5490	12330	105560	55550	96770	3670	34730	66570	32830	33780	3550	86790	10130	17670	15760	329180	10950	323410	810	18260	30200	34020	9830	259960	11200	9150	36570	3490	51900	316140	24110	11070	86280	90430	97950	302440	383220	11170	9540	377300	402340	32640	28050	352820	35250	267250	47810	34220	10140	326030	78930	720	18880	100	361610	161390	11790	5830	21240	251270	11780	271560	6800	4020	12450	10620	4990	60	29780	241560	36460	282330	137310	138040	128940	1450	5940	3410	7070	20150	71050	16360	47050	30000	64350	180640	112610	23530	8770	8560	52690	139480	204320	12750	10060	8930	79550	28670	2790	6260	272210	4170	1440	111770	1040	26960	138930	2380	880	81660	14680	336260	39490	42660	120	6360	47040	990	80	4370	88350	69620	7310	11210	1120	10120	285130	4000	51600	5850	6280	4800	298050	150	375500	14820	5300	69960	210	42670	120110	298020	3090	271940	240	93370	1230	19170	670	17800	1740	10780	185750	114090	9240	9900	1800	31430	69260	73240	192080	178920	6040	20560	16380	161890	6650	39130	300720	3240	5250	1680	103140	32350	9420	3850	294870	5440	284740	20000	105630	381970	192820	4490	241590	70	57050	13890";
-    public static void main(String[] args) throws IOException, ParseException {
-        String[] new_Dart_Code = Dart_Code.split(" ");
-        String[] new_Kospi_Code = Kospi_Code.split(" ");
+     public static List<List<String>> stock_code = new ArrayList<>();
+     public static void main(String[] args) throws IOException, ParseException {
         price_financial new_price_financial = new price_financial();
-        new_price_financial.price_financial("00126380", "5930");
-        /*
-        for(int num = 0; num < 200; num++){
-            new_price_financial.price_financial(new_Dart_Code[num], new_Kospi_Code[num]);
+        stock_code_series();
+        for(int i = 1; i < stock_code.size(); i++){
+            List<String> tmp = stock_code.get(i);
+            new_price_financial.price_financial(tmp.get(0), tmp.get(1));
+            //System.out.println(tmp.get(0) + " " + tmp.get(1) + " " + tmp.get(2));
         }
-        */
+         String[] ifrs_list = price_financial.jong_bok.toArray(new String[0]);
+         writeCSV("IFRS_중복제거", ifrs_list);
+    }
+    private static void stock_code_series() throws FileNotFoundException {
+        List<List<String>> csv_List = new ArrayList<>();
+        File csv = new File("D:\\Drive\\Code\\bacado\\csv\\STOCK_CODE.csv");
+        BufferedReader br = null;
+        String line = "";
+        //
+        try{
+            br = new BufferedReader((new FileReader(csv)));
+            // readLine()은 파일에서 개행된 한줄의 데이터를 읽어온다
+            while((line = br.readLine()) != null){
+                List<String> aLine = new ArrayList<>();
+                // 파일의 한 줄을 ,로 나누어 배열에 저장 후 리스트로 변환
+                String[] lineArr = line.split(",");
+                aLine = Arrays.asList(lineArr);
+                csv_List.add(aLine);
+            }
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(br != null){
+                    br.close();
+                }
+            } catch(IOException e){
+                e.printStackTrace();;
+            }
+        }
+        //
+        stock_code = csv_List;
+    }
+    private static void writeCSV(String File_name, String[] ifrs){
+         File csv = new File("D:\\Drive\\Code\\bacado\\csv\\" + File_name + ".csv");
+         BufferedWriter bw = null;
+        try{
+            bw = new BufferedWriter((new FileWriter(csv)));
+            // 덮어쓰기 true
+            for(int i = 0; i < ifrs.length; i++){
+                bw.write(ifrs[i]); //
+                bw.newLine(); // 개행
+                //System.out.println(tmp.get(0) + " " + tmp.get(1) + " " + tmp.get(2));
+            }
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(bw != null){
+                    bw.flush(); // 남아있는 데이터까지 보내준다.
+                    bw.close(); // 사용한 bufferedWriter를 닫아 준다.
+                }
+            } catch(IOException e){
+                e.printStackTrace();;
+            }
+        }
     }
 }
