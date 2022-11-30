@@ -58,7 +58,8 @@ public class price_financial {
         JSONArray item = (JSONArray)items.get("item");
         JSONObject value2 = (JSONObject)item.get(0);
         // Financial JASON
-        var value1_status = myjson1.get("status");
+        String value1_status = myjson1.get("status").toString();
+        System.out.println(value1_status);
         //
         var arr = new ArrayList<>();
         //
@@ -68,9 +69,9 @@ public class price_financial {
         arr.add(value2.get("mrktTotAmt")); // 시가총액 mrktTotAmt
         arr.add(value2.get("lstgStCnt")); // 상장좌수 lstgStCnt
         //
-        if(value1_status == "000"){
+        if(value1_status.equals("000")){
             for(var i = 0; i < value1.size(); i++){
-                arr.add(((JSONObject)value1.get(6)).get("account_id") + " " + ((JSONObject)value1.get(7)).get("account_nm") + " " + ((JSONObject)value1.get(8)).get("account_detail"));
+                arr.add(((JSONObject)value1.get(i)).get("account_id") + " " + ((JSONObject)value1.get(i)).get("account_nm") + " " + ((JSONObject)value1.get(i)).get("account_detail"));
                 //arr.add(((JSONObject)value1.get(6)).get("account_id")); // account_id 6
                 //arr.push(((JSONObject)value1.get(7)).get("account_nm")); // account_nm 7
                 //arr.push(((JSONObject)value1.get(8)).get("account_detail")); // account_detail 8

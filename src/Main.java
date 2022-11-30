@@ -10,7 +10,7 @@ public class Main {
         String[] new_Dart_Code = Dart_Code.split(" ");
         String[] new_Kospi_Code = Kospi_Code.split(" ");
         price_financial new_price_financial = new price_financial();
-        new_price_financial.price_financial("00126380", "298050");
+        new_price_financial.price_financial("00126380", "5930");
         /*
         for(int num = 0; num < 200; num++){
             new_price_financial.price_financial(new_Dart_Code[num], new_Kospi_Code[num]);
