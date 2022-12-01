@@ -19,7 +19,7 @@ public class price_financial {
     private final String half = "11011";
     private final String fs = "CFS";
     private String response1 = "";
-    private String response2 = "";
+    private String  response2 = "";
     public static HashSet<String> jong_bok = new HashSet<>();
     private int cnt = 0;
     public void price_financial(String dart_code, String short_code) throws IOException, ParseException {

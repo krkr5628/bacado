@@ -19,19 +19,19 @@ public class Main {
             new_price_financial.price_financial(tmp.get(3), tmp.get(4));
         }
         split_after new_split_after = new split_after();
-        writeCSV("IFRS_중복제거", new_split_after.split_after(price_financial.jong_bok));
+        writeCSV("IFRS_중복제거", new_split_after.Split_after(price_financial.jong_bok));
     }
-    private static void stock_code_series() throws FileNotFoundException {
+    private static void stock_code_series() {
         List<List<String>> csv_List = new ArrayList<>();
         File csv = new File("D:\\Drive\\Code\\bacado\\csv\\STOCK_CODE.csv");
         BufferedReader br = null;
-        String line = "";
+        String line;
         //
         try{
             br = new BufferedReader((new FileReader(csv)));
             // readLine()은 파일에서 개행된 한줄의 데이터를 읽어온다
             while((line = br.readLine()) != null){
-                List<String> aLine = new ArrayList<>();
+                List<String> aLine;
                 // 파일의 한 줄을 ,로 나누어 배열에 저장 후 리스트로 변환
                 String[] lineArr = line.split(",");
                 aLine = Arrays.asList(lineArr);
@@ -47,7 +47,7 @@ public class Main {
                     br.close();
                 }
             } catch(IOException e){
-                e.printStackTrace();;
+                e.printStackTrace();
             }
         }
         //
@@ -59,8 +59,8 @@ public class Main {
         try{
             bw = new BufferedWriter((new FileWriter(csv)));
             // 덮어쓰기 true
-            for(int i = 0; i < ifrs.size(); i++){
-                bw.write(ifrs.get(i).get(0) + "," + ifrs.get(i).get(1) + "," + ifrs.get(i).get(2));
+            for (List<String> ifr : ifrs) {
+                bw.write(ifr.get(0) + "," + ifr.get(1) + "," + ifr.get(2) +  "," + ifr.get(3));
                 bw.newLine(); // 개행
                 //System.out.println(tmp.get(0) + " " + tmp.get(1) + " " + tmp.get(2));
             }
@@ -75,7 +75,7 @@ public class Main {
                     bw.close(); // 사용한 bufferedWriter를 닫아 준다.
                 }
             } catch(IOException e){
-                e.printStackTrace();;
+                e.printStackTrace();
             }
         }
     }
