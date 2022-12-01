@@ -9,7 +9,7 @@ public class split_after {
         Iterator iter = tmp.iterator();
         while(iter.hasNext()){
             String[] after = iter.next().toString().split(",");
-            go.add(List.of(after[0],after[1],after[2]));
+            go.add(List.of(after[0],after[1],after[2], after[3]));
         }
         return go;
     }

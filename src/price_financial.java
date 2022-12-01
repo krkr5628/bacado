@@ -71,7 +71,7 @@ public class price_financial {
         */
         if(value1_status.equals("000")){
             for(var i = 0; i < value1.size(); i++){
-                jong_bok.add(((JSONObject)value1.get(i)).get("account_id") + "," + ((JSONObject)value1.get(i)).get("account_nm") + "," + ((JSONObject)value1.get(i)).get("account_detail"));
+                jong_bok.add(((JSONObject)value1.get(i)).get("sj_nm") + "," + ((JSONObject)value1.get(i)).get("account_id") + "," + ((JSONObject)value1.get(i)).get("account_nm") + "," + ((JSONObject)value1.get(i)).get("account_detail"));
                 //arr.add(((JSONObject)value1.get(i)).get("account_id") + " " + ((JSONObject)value1.get(i)).get("account_nm") + " " + ((JSONObject)value1.get(i)).get("account_detail"));
                 //arr.add(((JSONObject)value1.get(6)).get("account_id")); // account_id 6
                 //arr.push(((JSONObject)value1.get(7)).get("account_nm")); // account_nm 7
