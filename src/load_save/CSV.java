@@ -1,3 +1,5 @@
+package load_save;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -5,8 +7,8 @@ import java.util.List;
 
 public class CSV {
     public static List<List<String>> stock_code = new ArrayList<>();
-    public static void readCSV() {
-        File csv = new File("D:\\Drive\\Code\\bacado\\csv\\STOCK_CODE.csv");
+    public static void readCSV(String route) {
+        File csv = new File(route);
         BufferedReader br = null;
         String line;
         //
@@ -34,18 +36,15 @@ public class CSV {
             }
         }
     }
-    public static void writeCSV(String route, String dart_code, String year, String half, String fs, List<List<String>> ifrs){
-        File csv = new File("D:\\Drive\\Code\\bacado\\csv\\"
-                + route + "\\" + dart_code + "\\"
-                + dart_code + "_" + year + "_" + half + "_" + fs + ".csv");
+    public static void writeCSV(String input, List<List<String>> ifrs){
+        File csv = new File(input);
         BufferedWriter bw = null;
         try{
             bw = new BufferedWriter((new FileWriter(csv)));
             // 덮어쓰기 true
             for (List<String> ifr : ifrs) {
                 if(ifr.get(0).equals("금융회사")) break;
-                bw.write(ifr.get(0) + "," + ifr.get(1) + "," + ifr.get(2) +  ","
-                        + ifr.get(3) + "," + ifr.get(4) + "," + ifr.get(5));
+                bw.write(make_line(ifr));
                 bw.newLine(); // 개행
             }
         } catch(FileNotFoundException e){
@@ -62,5 +61,14 @@ public class CSV {
                 e.printStackTrace();
             }
         }
+    }
+    private static String make_line(List<String> file_line){
+        StringBuilder one_line = new StringBuilder();
+        int end_line = file_line.size();
+        for(int cnt = 0; cnt < end_line - 1; cnt++){
+            one_line.append(file_line.get(cnt)).append(",");
+        }
+        one_line.append(file_line.get(end_line));
+        return one_line.toString();
     }
 }
