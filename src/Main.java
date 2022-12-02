@@ -14,7 +14,6 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         price_financial new_price_financial = new price_financial();
         CSV.readCSV(read_route_for_dart_code);
-        //make_directory.Make_directory(CSV.stock_code);
         //KOSPI_200, KOSDAK_150
         for(int i = 1; i <= 200; i++){
             for(int j = 2012; j <= 2022; j++) {
