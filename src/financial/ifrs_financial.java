@@ -1,3 +1,5 @@
+package financial;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class price_financial {
+public class ifrs_financial {
     private int cnt = 0;
     public List<List<String>> financial_save;
-    public void Price_financial(String dart_code, String year, String half, String fs) throws IOException, ParseException {
+    public void download_financial(String dart_code, String year, String half, String fs) throws IOException, ParseException {
         int length = dart_code.length();
         if(length < 8){
             for(var i = 0; i < (8 - length); i++){
