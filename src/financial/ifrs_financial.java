@@ -17,7 +17,7 @@ import java.util.List;
 public class ifrs_financial {
     private int cnt = 0;
     public List<List<String>> financial_save;
-    public void download_financial(String dart_code, String year, String half, String fs) throws IOException, ParseException {
+    public void download_financial(String crtfc_key, String dart_code, String year, String half, String fs) throws IOException, ParseException {
         int length = dart_code.length();
         if(length < 8){
             for(var i = 0; i < (8 - length); i++){
@@ -25,7 +25,7 @@ public class ifrs_financial {
             }
         }
         //
-        String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=8b84c49305eb0a97b4729cdc268004cb2b41ae36&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
+        String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
         URL url1 = new URL(url_plus1);
         //
         BufferedReader bf1;
