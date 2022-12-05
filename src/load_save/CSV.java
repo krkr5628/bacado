@@ -68,7 +68,7 @@ public class CSV {
         for(int cnt = 0; cnt < end_line - 1; cnt++){
             one_line.append(file_line.get(cnt)).append(",");
         }
-        one_line.append(file_line.get(end_line));
+        one_line.append(file_line.get(end_line - 1));
         return one_line.toString();
     }
 }

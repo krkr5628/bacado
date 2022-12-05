@@ -16,7 +16,7 @@ public class Main {
         ifrs_financial new_ifrs_financial = new ifrs_financial();
         CSV.readCSV(read_route_for_dart_code);
         //KOSPI_200, KOSDAK_150
-        for(int i = 1; i <= 200; i++){
+        for(int i = 1; i <= 150; i++){
             for(int j = 2012; j <= 2022; j++) {
                 for (int k = 0; k < 4; k++) {
                     if(j == end_year && k == end_half) break;
@@ -24,6 +24,7 @@ public class Main {
                     String half_w = Integer.toString(k);
                     List<String> tmp = CSV.stock_code.get(i);
                     //
+                    /*
                     new_ifrs_financial.download_financial(tmp.get(0), year_w, half[k], "CFS");
                     CSV.writeCSV(write_route_for_dart_date + "kospi" + "\\" + tmp.get(0) + "\\"
                             + tmp.get(0) + "_" + year_w + "_" + half_w + "_" + "CFS",
@@ -33,19 +34,20 @@ public class Main {
                     CSV.writeCSV(write_route_for_dart_date + "kospi" + "\\" + tmp.get(0) + "\\"
                                     + tmp.get(0) + "_" + year_w + "_" + half_w + "_" + "OFS",
                             new_ifrs_financial.financial_save);
-                    /*
-                    if (i <= 150) {
-                        new_price_financial.Price_financial(tmp.get(3), year_w, half[k], "CFS");
-                        CSV.writeCSV(write_route_for_dart_date + "kosdak" + "\\" + tmp.get(3) + "\\"
-                            + tmp.get(0) + "_" + year_w + "_" + half_w + "_" + "CFS",
-                            new_price_financial.financial_save);
-                        //
-                        new_price_financial.Price_financial(tmp.get(3), year_w, half[k], "OFS");
-                        CSV.writeCSV(write_route_for_dart_date + "kosdak" + "\\" + tmp.get(3) + "\\"
-                            + tmp.get(0) + "_" + year_w + "_" + half_w + "_" + "CFS",
-                            new_price_financial.financial_save);
-                    }
                     */
+
+                    if (i <= 150) {
+                        new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "CFS");
+                        CSV.writeCSV(write_route_for_dart_date + "kosdak" + "\\" + tmp.get(3) + "\\"
+                            + tmp.get(3) + "_" + year_w + "_" + half_w + "_" + "CFS",
+                                new_ifrs_financial.financial_save);
+                        //
+                        new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "OFS");
+                        CSV.writeCSV(write_route_for_dart_date + "kosdak" + "\\" + tmp.get(3) + "\\"
+                            + tmp.get(3) + "_" + year_w + "_" + half_w + "_" + "CFS",
+                                new_ifrs_financial.financial_save);
+                    }
+
                 }
             }
         }
