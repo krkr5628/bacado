@@ -1,4 +1,3 @@
-//url_plus1 - 단일기 업 재무 제표(OpenDart)
 
 - 000 :정상
 - 010 :등록되지 않은 키입니다.
@@ -15,33 +14,8 @@
 - 900 :정의되지 않은 오류가 발생하였습니다.
 - 901 :사용자 계정의 개인정보 보유기간이 만료되어 사용할 수 없는 키입니다. 관리자 이메일(opendart@fss.or.kr)로 문의하시기 바랍니다.
 
-CFS:연결재무제표, OFS:재무제표
 
-1분기보고서 : 11013
-반기보고서 : 11012
-3분기보고서 : 11014
-사업보고서 : 11011
-
-BS : 재무상태표 
-IS : 손익계산서 
-CIS : 포괄손익계산서 
-CF : 현금흐름표 
-SCE : 자본변동표
-
-"rcept_no":"20220308000798", 0
-"reprt_code":"11011", 1
-"bsns_year":"2021", 2
-"corp_code":"00126380", 3
-"sj_div":"BS", 4
-"sj_nm":"재무상태표", 5
-"account_id":"ifrs-full_CurrentAssets", 6
-"account_nm":"유동자산", 7
-"account_detail":"-", 8
-"thstrm_nm":"제 53 기", 9
-"thstrm_amount":"218163185000000", 10
-"frmtrm_nm":"제 52 기", 11
-"frmtrm_amount":"198215579000000", 12
-"bfefrmtrm_nm":"제 51 기", 13
-"bfefrmtrm_amount":"181385260000000", 14
-"ord":"1", 15
-"currency":"KRW" 16
+corp_code	고유번호	공시대상회사의 고유번호(8자리) ※ ZIP File 안에 있는 XML파일 정보
+corp_name	정식명칭	정식회사명칭 ※ ZIP File 안에 있는 XML파일 정보
+stock_code	종목코드	상장회사인 경우 주식의 종목코드(6자리) ※ ZIP File 안에 있는 XML파일 정보
+modify_date	최종변경일자	기업개황정보 최종변경일자(YYYYMMDD) ※ ZIP File 안에 있는 XML파일 정보
