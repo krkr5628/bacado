@@ -55,15 +55,16 @@
 (back_end) 자료 수집, 분석 자동화, 데이터베이스 관리
 - main
 - initial.code_update : corp_code와 ISU_SRT_CD 매칭 후 저장
-- initial.dart_code_update : open_dart의 재무제표를 위한 corp_code 수집 후 저장
+- initial.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
 - initial.short_code_update : 종목 리스트 및 가격 확인을 위한 ISU_SRT_CD 수집 후 저장
 - initial_update_list : 신규 종목 및 업데이트 필요한 항목 수집 후 임시 저장
 - load_save.CSV : csv 파일 로드 및 저장, 경로지정, 파일명 지정, 파일 지정
 - load_save.make_directory : 신규 폴더 생성
 - export.ifrs_financial : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
+- export.dart_code : xml dart_code를 csv로 저장
 - caculation : 가치 계산 모음
 (frond_end)
-
+  export.dart_code : xml 형식 dart_code를 csv로 저장
 8. 파일(scv)
 - list : 증권 코드 목록 집합
 - kospi : 유가증권 10년 재무제표
