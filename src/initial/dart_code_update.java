@@ -19,8 +19,6 @@ public class dart_code_update {
     private static final String testDir = "D:\\Drive\\Code\\bacado\\";
     private static final String file_route = "D:\\Drive\\Code\\bacado\\CORPCODE.xml";
     private static final String save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\dart_code.csv";
-
-    public List<List<String>> financial_save;
     public static void Dart_code_update() throws IOException, ParserConfigurationException, SAXException {
         String url_plus1 = "https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=" + key;
         URL url1 = new URL(url_plus1);
