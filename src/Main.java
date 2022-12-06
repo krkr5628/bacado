@@ -1,8 +1,11 @@
 import export.ifrs_financial;
+import initial.dart_code_update;
 import load_save.CSV;
 
 import org.json.simple.parser.ParseException;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.List;
 
@@ -12,7 +15,10 @@ public class Main {
     private static final String[] half = {"11013", "11012", "11014","11011"};
     private static final String read_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\list\\STOCK_CODE.csv";
     private static final String write_route_for_dart_date = "D:\\Drive\\Code\\bacado\\csv\\";
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, ParserConfigurationException, SAXException {
+        dart_code_update.Dart_code_update();
+
+        //
         ifrs_financial new_ifrs_financial = new ifrs_financial();
         CSV.readCSV(read_route_for_dart_code);
         //KOSPI_200, KOSDAK_150
@@ -49,5 +55,6 @@ public class Main {
                 }
             }
         }
+
     }
 }
