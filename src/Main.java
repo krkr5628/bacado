@@ -22,7 +22,7 @@ public class Main {
         ifrs_financial new_ifrs_financial = new ifrs_financial();
         CSV.readCSV(read_route_for_dart_code);
         //
-        for(int i = 1; i <= 5; i++){
+        for(int i = 1; i <= 3; i++){
             for(int j = 2012; j <= 2022; j++) {
                 for (int k = 0; k < 4; k++) {
                     if(j == end_year && k == end_half) break;
@@ -32,7 +32,7 @@ public class Main {
                     new_ifrs_financial.download_financial(tmp.get(0), year_w, half[k], "CFS", "kospi");
                     new_ifrs_financial.download_financial(tmp.get(0), year_w, half[k], "OFS", "kospi");
                     //
-                    if (i <= 5) {
+                    if (i <= 3) {
                         new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "CFS", "kosdak");
                         new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "OFS", "kosdak");
                     }
