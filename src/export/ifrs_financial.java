@@ -1,5 +1,6 @@
 package export;
 
+import load_save.CSV;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,8 +18,9 @@ import java.util.List;
 public class ifrs_financial {
     private int cnt = 0;
     private static final String key = ""; // 입력하고 개발
+    private static final String write_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\";
     public List<List<String>> financial_save;
-    public void download_financial(String dart_code, String year, String half, String fs) throws IOException, ParseException {
+    public void download_financial(String dart_code, String year, String half, String fs, String market) throws IOException, ParseException {
         int length = dart_code.length();
         if(length < 8){
             for(var i = 0; i < (8 - length); i++){
@@ -56,7 +58,8 @@ public class ifrs_financial {
             arr.add(List.of("금융회사"));
         }
         System.out.println(cnt++);
-        financial_save = arr;
+        CSV.writeCSV(write_route_for_dart_code + market + "\\" + dart_code + "\\"
+                        + dart_code + "_" + year + "_" + half + "_" + fs, arr);
     }
 }
 /*
