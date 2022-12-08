@@ -20,13 +20,6 @@ public class ifrs_financial {
     private static final String key = ""; // 입력하고 개발
     private static final String write_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\";
     public static void download_financial(String dart_code, String year, String half, String fs, String market) throws IOException, ParseException {
-        int length = dart_code.length();
-        if(length < 8){
-            for(var i = 0; i < (8 - length); i++){
-                dart_code = "0" + dart_code;
-            }
-        }
-        //
         String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=" + key + "&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
         URL url1 = new URL(url_plus1);
         //

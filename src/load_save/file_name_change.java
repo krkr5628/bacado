@@ -17,18 +17,33 @@ public class file_name_change {
                 for (int k = 0; k < 4; k++) {
                     for(int t = 0; t <= 1; t++){
                         if(j == end_year && k == end_half) break;
+                        List<String> tmp = stock_code.get(i);
                         String year_w = Integer.toString(j);
                         String half_w = Integer.toString(k);
-                        List<String> tmp = stock_code.get(i);
+                        String code = code_length(tmp.get(0));
+                        File kospi_file = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0));
+                        File kospi_newfile = new File(write_route_for_dart_code + "kospi" + "\\" + code);
+                        /*
                         File kospi_file = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0) + "\\"
-                                + tmp.get(0) + "_" + year_w + "_" + half_w + "_" + fs[t] + ".csv");
-                        File kospi_newfile = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0) + "\\"
                                 + tmp.get(0) + "_" + year_w + "_" + half[k] + "_" + fs[t] + ".csv");
+                        File kospi_newfile = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0) + "\\"
+                                + code + "_" + year_w + "_" + half[k] + "_" + fs[t] + ".csv");
+
+                        */
                         boolean result = kospi_file.renameTo(kospi_newfile);
                         System.out.println(result);
                     }
                 }
             }
         }
+    }
+    private static String code_length(String tmp){
+        String new_code = tmp;
+        if(tmp.length() < 8){
+            for(var i = 0; i < (8 - tmp.length()); i++){
+                new_code = "0" + new_code;
+            }
+        }
+        return new_code;
     }
 }

@@ -1,17 +1,32 @@
 package load_save;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 public class make_directory {
-    public static void Make_directory(List<List<String>> total_file) throws IOException {
-        for(int i = 1; i <= 200; i++){
-            List<String> tmp = total_file.get(i);
-            Files.createDirectories(Paths.get("D:/Drive/Code/bacado/csv/kospi/" + tmp.get(0)));
-            if (i <= 150) {
-                Files.createDirectories(Paths.get("D:\\Drive\\Code\\bacado\\csv\\kosdak\\" + tmp.get(3)));
+    private static final String read_route_for_kospi_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
+    private static final String read_route_for_kosdak_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_integration.csv";
+    private static List<List<String>> kospi_code;
+    private static List<List<String>> kosdak_code;
+    public static void Make_directory() throws IOException {
+        kospi_code = CSV.readCSV(read_route_for_kospi_code);
+        kosdak_code = CSV.readCSV(read_route_for_kosdak_code);
+        int kospi_length = kospi_code.size();
+        int kosdak_length = kosdak_code.size();
+        for(int i = 0; i < kospi_length; i++){
+            String path = "D:\\Drive\\Code\\bacado\\csv\\kospi\\" + kospi_code.get(i).get(1);
+            if(!Files.exists(Path.of(path))){
+                Files.createDirectories(Paths.get(path));
+            }
+        }
+        for(int i = 0; i < kosdak_length ; i++){
+            String path = "D:\\Drive\\Code\\bacado\\csv\\kosdak\\" + kosdak_code.get(i).get(1);
+            if(!Files.exists(Path.of(path))) {
+                Files.createDirectories(Paths.get(path));
             }
         }
     }
