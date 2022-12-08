@@ -1,6 +1,5 @@
 import export.ifrs_financial;
-import initial.dart_code_update;
-import initial.short_code_update;
+import initial.code_update;
 import load_save.CSV;
 
 import org.json.simple.parser.ParseException;
@@ -11,36 +10,44 @@ import java.io.*;
 import java.util.List;
 
 public class Main {
-    private static final int end_year = 2022;
-    private static final int end_half = 3;
+    private static final String read_route_for_kospi_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
+    private static final String read_route_for_kosdak_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_integration.csv";
+    private static List<List<String>> kospi_code;
+    private static List<List<String>> kosdak_code;
     private static final String[] half = {"11013", "11012", "11014","11011"};
-    private static final String read_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\list\\STOCK_CODE.csv";
+    private static final int end_year = 2022; // 업데이트 해줘야함
+    private static final int end_half = 3; // 업데이트 해줘야함
     public static void main(String[] args) throws IOException, ParseException, ParserConfigurationException, SAXException {
-        short_code_update.Short_code_update();
-        dart_code_update.Dart_code_update();
 
-        ifrs_financial new_ifrs_financial = new ifrs_financial();
-        CSV.readCSV(read_route_for_dart_code);
+        /*
+        code_update.Code_update();
         //
+        kospi_code = CSV.readCSV(read_route_for_kospi_code);
+        kosdak_code = CSV.readCSV(read_route_for_kosdak_code);
+        //
+        download();
+        */
+    }
+    private static void download() throws IOException, ParseException {
         for(int i = 1; i <= 3; i++){
-            for(int j = 2012; j <= 2022; j++) {
+            for(int j = 2019; j <= 2022; j++) {
                 for (int k = 0; k < 4; k++) {
                     if(j == end_year && k == end_half) break;
                     String year_w = Integer.toString(j);
-                    List<String> tmp = CSV.stock_code.get(i);
                     //
-                    new_ifrs_financial.download_financial(tmp.get(0), year_w, half[k], "CFS", "kospi");
-                    new_ifrs_financial.download_financial(tmp.get(0), year_w, half[k], "OFS", "kospi");
+                    List<String> tmp = kospi_code.get(i);
+                    List<String> tmp2 = kosdak_code.get(i);
+                    //
+                    ifrs_financial.download_financial(tmp.get(1), year_w, half[k], "CFS", "kospi");
+                    ifrs_financial.download_financial(tmp.get(1), year_w, half[k], "OFS", "kospi");
                     //
                     if (i <= 3) {
-                        new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "CFS", "kosdak");
-                        new_ifrs_financial.download_financial(tmp.get(3), year_w, half[k], "OFS", "kosdak");
+                        ifrs_financial.download_financial(tmp2.get(1), year_w, half[k], "CFS", "kosdak");
+                        ifrs_financial.download_financial(tmp2.get(1), year_w, half[k], "OFS", "kosdak");
                     }
 
                 }
             }
         }
-
-
     }
 }
