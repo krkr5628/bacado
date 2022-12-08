@@ -16,7 +16,7 @@ import java.util.List;
 
 public class short_code_update {
     private static final String date = "20221206"; // 변경하고 개발 / 전날 입력
-    private static final String key = ""; // 입력하고 개발
+    private static final String key = "5"; // 입력하고 개발
     private static final String kospi_api = "https://data-dbg.krx.co.kr/svc/apis/sto/stk_isu_base_info.json?basDd=";
     private static final String kosdak_api = "http://data-dbg.krx.co.kr/svc/apis/sto/ksq_isu_base_info.json?basDd=";
     private static final String kospi_save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
@@ -41,9 +41,8 @@ public class short_code_update {
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
         for (Object o : value) {
-            arr.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570
-                    ((JSONObject) o).get("ISU_NM").toString(), // 한글 종목명 AJ네트웍스보통주
-                    ((JSONObject) o).get("ISU_ABBRV").toString(), // 한글 종목약명 AJ네트웍스
+            arr.add(List.of(((JSONObject) o).get("ISU_ABBRV").toString(), // 단축코드 095570
+                    ((JSONObject) o).get("ISU_SRT_CD").toString(), // 한글 종목약명 AJ네트웍스 ISU_SRT_CD
                     ((JSONObject) o).get("LIST_SHRS").toString() // 상장주식수 46822295
             ));
         }

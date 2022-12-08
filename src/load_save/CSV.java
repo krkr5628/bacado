@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CSV {
-    public static List<List<String>> stock_code = new ArrayList<>();
-    public static void readCSV(String route) {
+    public static List<List<String>> readCSV(String route) {
+        List<List<String>> stock_code = new ArrayList<>();
         File csv = new File(route);
         BufferedReader br = null;
         String line;
@@ -35,9 +35,10 @@ public class CSV {
                 e.printStackTrace();
             }
         }
+        return stock_code;
     }
-    public static void writeCSV(String input, List<List<String>> ifrs){
-        File csv = new File(input);
+    public static void writeCSV(String route, List<List<String>> ifrs){
+        File csv = new File(route);
         BufferedWriter bw = null;
         try{
             bw = new BufferedWriter((new FileWriter(csv)));

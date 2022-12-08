@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -16,6 +17,7 @@ import java.util.zip.ZipInputStream;
 public class dart_code_update {
     private static final String key = ""; // 입력하고 개발
     private static final String testDir = "D:\\Drive\\Code\\bacado\\";
+    private static final String fileName = "CORPCODE.xml";
     private static final String file_route = "D:\\Drive\\Code\\bacado\\CORPCODE.xml";
     private static final String save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\dart_code.csv";
     public static void Dart_code_update() throws IOException, ParserConfigurationException, SAXException {
@@ -25,6 +27,9 @@ public class dart_code_update {
         InputStream inputStream = new ByteArrayInputStream(url1.openStream().readAllBytes());
         ZipInputStream zipInputStream = new ZipInputStream(inputStream);
         ZipEntry zipEntry = null;
+        //
+        Path path = Path.of(testDir + fileName);
+        Files.deleteIfExists(path);
         //
         while((zipEntry = zipInputStream.getNextEntry()) != null){
             Files.copy(zipInputStream, Paths.get(testDir + zipEntry.getName()));
