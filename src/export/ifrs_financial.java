@@ -16,11 +16,10 @@ import java.util.List;
 
 
 public class ifrs_financial {
-    private int cnt = 0;
+    private static int cnt = 0;
     private static final String key = ""; // 입력하고 개발
     private static final String write_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\";
-    public List<List<String>> financial_save;
-    public void download_financial(String dart_code, String year, String half, String fs, String market) throws IOException, ParseException {
+    public static void download_financial(String dart_code, String year, String half, String fs, String market) throws IOException, ParseException {
         int length = dart_code.length();
         if(length < 8){
             for(var i = 0; i < (8 - length); i++){
@@ -44,14 +43,14 @@ public class ifrs_financial {
         //
         List<List<String>> arr = new ArrayList<>();
         if(value1_status.equals("000")){
-            for(var i = 0; i < value1.size(); i++){
-                arr.add(List.of(((JSONObject)value1.get(i)).get("sj_nm").toString(), // 재무상태표
-                        ((JSONObject)value1.get(i)).get("account_id").toString(), // ifrs-full_CurrentAssets
-                        ((JSONObject)value1.get(i)).get("account_nm").toString(), // 유동자산
-                        ((JSONObject)value1.get(i)).get("account_detail").toString(), // -
-                        ((JSONObject)value1.get(i)).get("thstrm_nm").toString(), // 53기
-                        ((JSONObject)value1.get(i)).get("thstrm_amount").toString() // 218163185000000
-                        ));
+            for (Object o : value1) {
+                arr.add(List.of(((JSONObject) o).get("sj_nm").toString(), // 재무상태표
+                        ((JSONObject) o).get("account_id").toString(), // ifrs-full_CurrentAssets
+                        ((JSONObject) o).get("account_nm").toString(), // 유동자산
+                        ((JSONObject) o).get("account_detail").toString(), // -
+                        ((JSONObject) o).get("thstrm_nm").toString(), // 53기
+                        ((JSONObject) o).get("thstrm_amount").toString() // 218163185000000
+                ));
             }
         }
         else if(value1_status.equals("013")){
