@@ -1,25 +1,27 @@
 package initial;
 
 import load_save.CSV;
+import org.json.simple.parser.ParseException;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class code_update {
-    private static final String dart_route = "D:\\Drive\\Code\\bacado\\csv\\list\\dart_code.csv";
-    private static final String kospi_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
-    private static final String kosdak_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_code.csv";
     private static final String kospi_save = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
     private static final String kosdak_save = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_integration.csv";
 
-    public static void Code_update(){
-        HashMap<String, String> dart_code = ListToHashMap(CSV.readCSV(dart_route));
-        List<List<String>> kospi_code = CSV.readCSV(kospi_route);
-        List<List<String>> kosdak_code = CSV.readCSV(kosdak_route);
+    public static void Code_update() throws IOException, ParserConfigurationException, SAXException, ParseException {
+        dart_code_update.Dart_code_update();
+        short_code_update.Short_code_update();
         //
-        integration(kospi_code, dart_code, kospi_save);
-        integration(kosdak_code, dart_code, kosdak_save);
+        HashMap<String, String> dart_code = ListToHashMap(dart_code_update.dart_list);
+        //
+        integration(short_code_update.short_list.get(0), dart_code, kospi_save);
+        integration(short_code_update.short_list.get(1), dart_code, kosdak_save);
     }
     private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
         HashMap<String, String> tmp = new HashMap<>();
