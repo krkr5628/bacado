@@ -19,9 +19,11 @@ public class code_update {
         short_code_update.Short_code_update();
         //
         HashMap<String, String> dart_code = ListToHashMap(dart_code_update.dart_list);
-        //
         integration(short_code_update.short_list.get(0), dart_code, kospi_save);
         integration(short_code_update.short_list.get(1), dart_code, kosdak_save);
+        //
+        update_status.Update_list();
+        update_list.Update_list();
     }
     private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
         HashMap<String, String> tmp = new HashMap<>();

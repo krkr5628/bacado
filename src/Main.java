@@ -18,15 +18,14 @@ public class Main {
     private static final int end_year = 2022; // 업데이트 해줘야함
     private static final int end_half = 3; // 업데이트 해줘야함
     public static void main(String[] args) throws IOException, ParseException, ParserConfigurationException, SAXException {
-
-        /*
         code_update.Code_update();
+
         //
         kospi_code = CSV.readCSV(read_route_for_kospi_code);
         kosdak_code = CSV.readCSV(read_route_for_kosdak_code);
         //
         download();
-        */
+
     }
     private static void download() throws IOException, ParseException {
         for(int i = 1; i <= 3; i++){

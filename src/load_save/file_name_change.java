@@ -21,17 +21,18 @@ public class file_name_change {
                         String year_w = Integer.toString(j);
                         String half_w = Integer.toString(k);
                         String code = code_length(tmp.get(0));
-                        File kospi_file = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0));
-                        File kospi_newfile = new File(write_route_for_dart_code + "kospi" + "\\" + code);
-                        /*
+                        // 폴더명 변환
+                        File kospi_forder = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0));
+                        File kospi_newforder  = new File(write_route_for_dart_code + "kospi" + "\\" + code);
+                        // 파일명 변환
                         File kospi_file = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0) + "\\"
                                 + tmp.get(0) + "_" + year_w + "_" + half[k] + "_" + fs[t] + ".csv");
                         File kospi_newfile = new File(write_route_for_dart_code + "kospi" + "\\" + tmp.get(0) + "\\"
                                 + code + "_" + year_w + "_" + half[k] + "_" + fs[t] + ".csv");
-
-                        */
-                        boolean result = kospi_file.renameTo(kospi_newfile);
+                        boolean result = kospi_forder.renameTo(kospi_newforder);
+                        boolean result2 = kospi_file.renameTo(kospi_newfile);
                         System.out.println(result);
+                        System.out.println(result2);
                     }
                 }
             }
