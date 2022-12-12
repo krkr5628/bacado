@@ -2,6 +2,7 @@ package initial;
 
 import load_save.CSV;
 import static initial.setting.krx_api_key;
+import static initial.setting.short_code_date;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class short_code_update {
-    private static final String date = "20221206"; // 변경하고 개발 / 전날 입력
     private static final String kospi_api = "https://data-dbg.krx.co.kr/svc/apis/sto/stk_isu_base_info.json?basDd=";
     private static final String kosdak_api = "http://data-dbg.krx.co.kr/svc/apis/sto/ksq_isu_base_info.json?basDd=";
     private static final String kospi_save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
@@ -29,7 +29,7 @@ public class short_code_update {
     }
     private static void api_read(String api_route, String save_route) throws IOException, ParseException {
         List<List<String>> tmp = new ArrayList<>();
-        String url_plus = api_route + date + "&AUTH_KEY=" + krx_api_key;
+        String url_plus = api_route + short_code_date + "&AUTH_KEY=" + krx_api_key;
         URL url = new URL(url_plus);
         //
         BufferedReader bf;
