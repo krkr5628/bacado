@@ -7,9 +7,10 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import static initial.setting.end_half;
+import static initial.setting.end_year;
+
 public class update_status {
-    private static final int end_year = 2022;
-    private static final int end_half = 3;
     private static final String[] half = {"11013", "11012", "11014","11011"};
     private static final String read_route_for_kospi_integration = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
     private static final String read_route_for_kosdak_integration = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_integration.csv";

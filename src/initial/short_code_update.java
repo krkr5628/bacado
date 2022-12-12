@@ -1,7 +1,7 @@
 package initial;
 
 import load_save.CSV;
-import static initial.api_key_dont_connet.krx_api_key;
+import static initial.setting.krx_api_key;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -1,6 +1,8 @@
 package export;
 
 import load_save.CSV;
+import static initial.setting.dart_api_key;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,13 +16,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ifrs_financial {
     private static int cnt = 0;
-    private static final String key = ""; // 입력하고 개발
     private static final String write_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\";
     public static void download_financial(String dart_code, String year, String half, String fs, String market) throws IOException, ParseException {
-        String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=" + key + "&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
+        String url_plus1 = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json?crtfc_key=" + dart_api_key + "&corp_code=" + dart_code + "&bsns_year=" + year + "&reprt_code=" + half + "&fs_div=" + fs;
         URL url1 = new URL(url_plus1);
         //
         BufferedReader bf1;
