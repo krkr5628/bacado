@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class short_code_update {
@@ -43,13 +44,46 @@ public class short_code_update {
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
         for (Object o : value) {
-            tmp.add(List.of(((JSONObject) o).get("ISU_ABBRV").toString(), // 단축코드 095570
-                    ((JSONObject) o).get("ISU_SRT_CD").toString(), // 한글 종목약명 AJ네트웍스 ISU_SRT_CD
-                    ((JSONObject) o).get("LIST_SHRS").toString() // 상장주식수 46822295
+            tmp.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570 한글 종목약명 AJ네트웍스
+                    ((JSONObject) o).get("ISU_ABBRV").toString(), // 한글 종목약명 AJ네트웍스
+                    ((JSONObject) o).get("ISU_ABBRV").toString() // DART 호환 가능 종목약명
             ));
         }
-        short_list.add(tmp);
-        CSV.writeCSV(save_route, tmp);
+        check_overlap(tmp, save_route);
+        //short_list.add(tmp);
+        //CSV.writeCSV(save_route, tmp);
     }
-
+    private static void check_overlap(List<List<String>> update_code, String save_route){
+        List<List<String>> new_code_list = new ArrayList<>();
+        List<List<String>> old_code_list = CSV.readCSV(save_route);
+        HashMap<String, String> old_code_list_Map_krx_name = ListToHashMap(old_code_list);
+        HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap_edit(old_code_list);
+        for(List<String> tmp : update_code){
+            if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
+                new_code_list.add(List.of(tmp.get(0), tmp.get(1), "E_" + tmp.get(1)));
+            }
+            else if (!old_code_list_Map_krx_name.containsKey(tmp.get(0))){
+                new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
+            }
+            else{
+                new_code_list.add(List.of(tmp.get(0), tmp.get(1), old_code_list_Map_dart_name.get(tmp.get(0))));
+            }
+        }
+        short_list.add(new_code_list);
+        CSV.writeCSV(save_route, new_code_list);
+    }
+    private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
+        HashMap<String, String> tmp = new HashMap<>();
+        for(List<String> line : input_list){
+            tmp.put(line.get(0), line.get(1));
+        }
+        return tmp;
+    }
+    private static HashMap<String, String> ListToHashMap_edit(List<List<String>> input_list){
+        HashMap<String, String> tmp = new HashMap<>();
+        for(List<String> line : input_list){
+            tmp.put(line.get(0), line.get(2));
+        }
+        return tmp;
+    }
 }

@@ -19,14 +19,13 @@ public class update_status {
     }
     private static List<List<String>> update(List<List<String>> code, String market){
         List<List<String>> save = new ArrayList<>();
-        save.add(List.of("update_time", status_update_time)); // 실시간
         for (List<String> tmp : code) {
             save.add(loop(tmp, market));
         }
         return save;
     }
     private static List<String> loop(List<String> line, String market){
-        for(int j = 2012; j <= 2022; j++) {
+        for(int j = 2012; j <= end_year; j++) {
             for (int k = 0; k < 4; k++) {
                 if(j == end_year && k == end_half){
                     if(k - 1 < 0) {

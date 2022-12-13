@@ -61,8 +61,8 @@ public class dart_code_update {
         for(int cnt = 0; cnt < nList.getLength(); cnt++){
             Node nNode = nList.item(cnt);
             Element eElement = (Element) nNode;
-            dart_list.add(List.of(eElement.getElementsByTagName("corp_name").item(0).getTextContent(),
-                    eElement.getElementsByTagName("corp_code").item(0).getTextContent()));
+            dart_list.add(List.of(eElement.getElementsByTagName("corp_code").item(0).getTextContent(),
+                    eElement.getElementsByTagName("corp_name").item(0).getTextContent()));
         }
         CSV.writeCSV(save_route, dart_list);
     }
