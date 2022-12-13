@@ -45,13 +45,10 @@ public class ifrs_financial {
                         ((JSONObject) o).get("thstrm_amount").toString() // 218163185000000
                 ));
             }
-        }
-        else if(value1_status.equals("013")){
-            arr.add(List.of("금융회사"));
+            CSV.writeCSV(write_route_for_dart_code + market + "\\" + dart_code + "\\"
+                    + dart_code + "_" + year + "_" + half + "_" + fs + ".csv", arr);
         }
         System.out.println(cnt++);
-        CSV.writeCSV(write_route_for_dart_code + market + "\\" + dart_code + "\\"
-                        + dart_code + "_" + year + "_" + half + "_" + fs, arr);
     }
 }
 /*
