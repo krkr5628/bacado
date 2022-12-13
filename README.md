@@ -1,9 +1,10 @@
 [현재]
-1. json parsing 분리
-2. dart_code zip 파일 해제 후 xml parsing 
-3. dart_code 및 short_code 매칭
-4. 업데이트 현황
-5. api 과다 요청으로 인한 아이피 차단 문제 해결
+1. 1일 트래픽 2만회 제한으로 재무제표 1일 200종목씩 다운로드 시작
+2. 가격 정보 10년치 다운로드 예정
+[고민]
+1. 신규 종목 혹은 변경 상장에 대한 해결책
+2. 대주주 목록 혹은 투자자 목록(누적)
+3. 현재 시간에서 업데이트 기간 자동 파악(거의)
 
 # bacado
 1. 목적
@@ -57,19 +58,33 @@
 - initial.code_update : corp_code와 ISU_SRT_CD 매칭 후 저장
 - initial.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
 - initial.short_code_update : 종목 리스트 및 가격 확인을 위한 ISU_SRT_CD 수집 후 저장
-- initial_update_list : 신규 종목 및 업데이트 필요한 항목 수집 후 임시 저장
+- initial.update_status : 업데이트 현황 파악
+- initial.update_list : 업데이트 필요한 종목만 분리하여 저장
 - load_save.CSV : csv 파일 로드 및 저장, 경로지정, 파일명 지정, 파일 지정
 - load_save.make_directory : 신규 폴더 생성
+- load_save.file_name_change : 파일명 변경
 - export.ifrs_financial : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
-- export.dart_code : xml dart_code를 csv로 저장
 - caculation : 가치 계산 모음
 (frond_end)
-  export.dart_code : xml 형식 dart_code를 csv로 저장
+- Amazon Sail
+- Gavia
+- cafe24
 8. 파일(scv)
-- list : 증권 코드 목록 집합
-- kospi : 유가증권 10년 재무제표
-- kosdak : 코스닥 10년 재무제표
-….지속적 추가
+(list)
+- dart_code : open_dart corp_code 원본 파일(영업일 마다 업데이트)
+- kospi_code : krx kospi short_code 원본 파일(영업일 마다 업데이트, 기존 파일에 신규 코드만 추가)
+- kosdak_code : krx kosdak short_code 원본 파일(영업일 마다 업데이트, 기존 파일에 신규 코드만 추가)
+- kospi_integration : kospi corp_code와 short_code 연결되어 정리된 파일(비매칭 현황 직접 수정)
+- kosdak_integration : kosdak corp_code와 short_code 연결되어 정리된 파일(비매칭 현황 직접 수정)
+- kospi_left : kospi 매칭불가능한 회사 목록(영업일 확인 후 업데이트)
+- kosdak_left : kosdak 매칭불가능한 회사 목록(영업일 확인 후 업데이트)
+- kospi_status : 재무제표 업데이트 현황 및 비금융회사 구분 목록
+- kosdak_status : 재무제표 업데이트 현황 및 비금융회사 구분 목록
+- kospi_update_list : 재무제표 업데이트가 필요한 회사 목록
+- kosdak_update_list : 재무제표 업데이트가 필요한 회사 목록
+
+(kospi) 유가증권 2012 ~ 재무제표 (Dart_code 순으로 정리)
+(kosdak) 코스닥 2012 ~ 재무제표 (Dart_code 순으로 정리)
 
 9. 향후
 - 클라우드 플랫폼을 통한 데이터 분석
