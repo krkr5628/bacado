@@ -21,17 +21,23 @@ public class code_update {
     private static final String save_route_for_kodak_update_list = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_update_list.csv";
 
     public static void Code_update() throws IOException, ParserConfigurationException, SAXException, ParseException {
+        // code_update
         dart_code_update.Dart_code_update();
         short_code_update.Short_code_update();
         //
         HashMap<String, String> dart_code = ListToHashMap(dart_code_update.dart_list);
-        //
-        update_status.Update_status(integration(short_code_update.short_list.get(0), dart_code,
-                        save_route_for_kospi_integration, save_route_for_kospi_left),
-                "kospi", save_route_for_kospi_status, save_route_for_kospi_update_list);
-        update_status.Update_status(integration(short_code_update.short_list.get(1), dart_code,
-                        save_route_for_kosdak_integration, save_route_for_kosdak_left),
-                "kosdak", save_route_for_kodak_status, save_route_for_kodak_update_list);
+        // code_integration
+        List<List<String>> kospi_integration = integration(short_code_update.short_list.get(0), dart_code,
+                save_route_for_kospi_integration, save_route_for_kospi_left);
+        List<List<String>> kosdak_integration = integration(short_code_update.short_list.get(1), dart_code,
+                save_route_for_kosdak_integration, save_route_for_kosdak_left);
+        // code_status_update, code_update_list_update
+        update_status.Update_status(kospi_integration, "kospi",
+                save_route_for_kospi_status, save_route_for_kospi_update_list);
+        update_status.Update_status(kosdak_integration, "kosdak",
+                save_route_for_kodak_status, save_route_for_kodak_update_list);
+        // price update
+        price_update.Price_update(kospi_integration, kosdak_integration);
     }
     private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
         HashMap<String, String> tmp = new HashMap<>();

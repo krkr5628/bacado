@@ -37,10 +37,29 @@ public class CSV {
         }
         return stock_code;
     }
-    public static void wirteCSVcontinue(String route, List<List<String>> original_file, List<List<String>> extra_file){
-
-
-
+    public static void wirteCSVcontinue(String route, List<List<String>> file){
+        File csv = new File(route);
+        BufferedWriter bw = null;
+        try{
+            bw = new BufferedWriter((new FileWriter(csv, true)));
+            for (List<String> line : file) {
+                bw.write(make_line(line));
+                bw.newLine(); // 개행
+            }
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(bw != null){
+                    bw.flush(); // 남아있는 데이터까지 보내준다.
+                    bw.close(); // 사용한 bufferedWriter를 닫아 준다.
+                }
+            } catch(IOException e){
+                e.printStackTrace();
+            }
+        }
     }
     public static void writeCSV(String route, List<List<String>> file){
         File csv = new File(route);
@@ -48,9 +67,8 @@ public class CSV {
         try{
             bw = new BufferedWriter((new FileWriter(csv)));
             // 덮어쓰기 true
-            for (List<String> ifr : file) {
-                if(ifr.get(0).equals("금융회사")) break;
-                bw.write(make_line(ifr));
+            for (List<String> line : file) {
+                bw.write(make_line(line));
                 bw.newLine(); // 개행
             }
         } catch(FileNotFoundException e){

@@ -21,12 +21,12 @@ import java.util.List;
 public class short_code_update {
     private static final String kospi_api = "https://data-dbg.krx.co.kr/svc/apis/sto/stk_isu_base_info.json?basDd=";
     private static final String kosdak_api = "http://data-dbg.krx.co.kr/svc/apis/sto/ksq_isu_base_info.json?basDd=";
-    private static final String kospi_save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
-    private static final String kosdak_save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_code.csv";
+    private static final String save_route_for_kospi_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
+    private static final String save_route_for_kosdak_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_code.csv";
     public static List<List<List<String>>> short_list = new ArrayList<>();
     public static void Short_code_update() throws IOException, ParseException {
-        api_read(kospi_api,kospi_save_route);
-        api_read(kosdak_api,kosdak_save_route);
+        api_read(kospi_api, save_route_for_kospi_code);
+        api_read(kosdak_api, save_route_for_kosdak_code);
     }
     private static void api_read(String api_route, String save_route) throws IOException, ParseException {
         List<List<String>> tmp = new ArrayList<>();
@@ -50,6 +50,7 @@ public class short_code_update {
             ));
         }
         check_overlap(tmp, save_route);
+
         //short_list.add(tmp);
         //CSV.writeCSV(save_route, tmp);
     }

@@ -27,9 +27,9 @@ import java.util.zip.ZipInputStream;
 
 public class dart_code_update {
     private static final String testDir = "D:\\Drive\\Code\\bacado\\";
-    private static final String fileName = "CORPCODE.xml";
-    private static final String file_route = "D:\\Drive\\Code\\bacado\\CORPCODE.xml";
-    private static final String save_route = "D:\\Drive\\Code\\bacado\\csv\\list\\dart_code.csv";
+    private static final String file_name_for_dart_code = "CORPCODE.xml";
+    private static final String load_route_for_dart_code_xml = "D:\\Drive\\Code\\bacado\\CORPCODE.xml";
+    private static final String save_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\list\\dart_code.csv";
     public static List<List<String>> dart_list = new ArrayList<>();
     public static void Dart_code_update() throws IOException, ParserConfigurationException, SAXException {
         String url_plus1 = "https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=" + dart_api_key;
@@ -39,7 +39,7 @@ public class dart_code_update {
         ZipInputStream zipInputStream = new ZipInputStream(inputStream);
         ZipEntry zipEntry;
         //
-        Path path = Path.of(testDir + fileName);
+        Path path = Path.of(testDir + file_name_for_dart_code);
         Files.deleteIfExists(path);
         //
         while((zipEntry = zipInputStream.getNextEntry()) != null){
@@ -52,7 +52,7 @@ public class dart_code_update {
         xmltocsv();
     }
     private static void xmltocsv() throws ParserConfigurationException, IOException, SAXException {
-        File file = new File(file_route);
+        File file = new File(load_route_for_dart_code_xml);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document document = db.parse(file);
@@ -64,6 +64,6 @@ public class dart_code_update {
             dart_list.add(List.of(eElement.getElementsByTagName("corp_code").item(0).getTextContent(),
                     eElement.getElementsByTagName("corp_name").item(0).getTextContent()));
         }
-        CSV.writeCSV(save_route, dart_list);
+        CSV.writeCSV(save_route_for_dart_code, dart_list);
     }
 }
