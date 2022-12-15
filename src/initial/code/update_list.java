@@ -1,4 +1,4 @@
-package initial;
+package initial.code;
 
 import load_save.CSV;
 

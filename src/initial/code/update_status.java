@@ -1,8 +1,8 @@
-package initial;
+package initial.code;
 
 import load_save.CSV;
 import static initial.setting.*;
-import static initial.update_list.Update_list;
+import static initial.code.update_list.Update_list;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
