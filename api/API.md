@@ -5,6 +5,9 @@
 4. krx_open_api - 코스닥 종목기본정보
 5. krx_open_api - 유가증권 일별매매정보
 6. krx_open_api - 코스닥 일별매매정보
+7. krx_open_api - KRX 시리즈 일별시세정보
+8. krx_open_api - KOSPI 시리즈 일별시세정보
+9. krx_open_api - KOSDAQ 시리즈 일별시세정보
 
 
 (사용 예정)
