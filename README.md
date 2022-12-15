@@ -58,17 +58,20 @@
 - initial.code_update : corp_code와 ISU_SRT_CD 매칭 후 저장
 - initial.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
 - initial.short_code_update : 종목 리스트 및 가격 확인을 위한 ISU_SRT_CD 수집 후 저장
+- initial.price_update : 종목 일봉 업데이트
 - initial.update_status : 업데이트 현황 파악
 - initial.update_list : 업데이트 필요한 종목만 분리하여 저장
 - load_save.CSV : csv 파일 로드 및 저장, 경로지정, 파일명 지정, 파일 지정
 - load_save.make_directory : 신규 폴더 생성
 - load_save.file_name_change : 파일명 변경
+- load_save.ListToHashMap : 리스트 ⇒ hashmap 변경
 - export.ifrs_financial : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
 - caculation : 가치 계산 모음
 (frond_end)
-- Amazon Sail
-- Gavia
-- cafe24
+- Amazon LightSail
+- WordPress(검토중)
+
+
 8. 파일(scv)
 (list)
 - dart_code : open_dart corp_code 원본 파일(영업일 마다 업데이트)
