@@ -26,14 +26,24 @@ public class update_status {
         return save;
     }
     private static List<String> check(int idx, List<String> line, String market, String year, int half_code){
-        if(idx < 200){
+        if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
+                + line.get(1) + "_price_history.csv"))) {
             if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
                     + line.get(1) + "_" + year + "_" + half[half_code] + "_" + "OFS" + ".csv"))){
-                return List.of(line.get(1), year + "-" + half[half_code], "non_financial_company");
+                return List.of(line.get(1), year + "-" + half[half_code], "Y", "non_financial_company");
             }
-            return List.of(line.get(1),"2011-11011", "financial_company");
+            else{
+                return List.of(line.get(1), "2011-11011", "Y", "update");
+            }
         }
-        return List.of(line.get(1),"2011-11011", "update");
-
+        else{
+            if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
+                    + line.get(1) + "_" + year + "_" + half[half_code] + "_" + "OFS" + ".csv"))){
+                return List.of(line.get(1), year + "-" + half[half_code], "N", "non_financial_company");
+            }
+            else{
+                return List.of(line.get(1), "2011-11011", "N", "update");
+            }
+        }
     }
 }
