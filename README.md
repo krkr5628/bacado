@@ -1,6 +1,9 @@
 [현재]
 1. 1일 트래픽 2만회 제한으로 재무제표 1일 200종목씩 다운로드 시작
-2. 가격 정보 10년치 다운로드 예정
+2. 지수 정보 10년치 다운로드 예정
+3. 재무재표 매핑
+4. 주요 지표(per, pbr, rsi 등) 업데이트
+
 [고민]
 1. 신규 종목 혹은 변경 상장에 대한 해결책
 2. 대주주 목록 혹은 투자자 목록(누적)
@@ -65,7 +68,7 @@
 - load_save.make_directory : 신규 폴더 생성
 - load_save.file_name_change : 파일명 변경
 - load_save.ListToHashMap : 리스트 ⇒ hashmap 변경
-- export.ifrs_financial : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
+- export.ifrs_update : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
 - caculation : 가치 계산 모음
 (frond_end)
 - Amazon LightSail
