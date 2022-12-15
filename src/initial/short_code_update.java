@@ -2,8 +2,9 @@ package initial;
 
 import load_save.CSV;
 import static initial.setting.krx_api_key;
-import static initial.setting.short_code_date;
+import static initial.setting.standard_date;
 
+import load_save.ListToHashMap;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,7 +31,7 @@ public class short_code_update {
     }
     private static void api_read(String api_route, String save_route) throws IOException, ParseException {
         List<List<String>> tmp = new ArrayList<>();
-        String url_plus = api_route + short_code_date + "&AUTH_KEY=" + krx_api_key;
+        String url_plus = api_route + standard_date + "&AUTH_KEY=" + krx_api_key;
         URL url = new URL(url_plus);
         //
         BufferedReader bf;
@@ -50,15 +51,12 @@ public class short_code_update {
             ));
         }
         check_overlap(tmp, save_route);
-
-        //short_list.add(tmp);
-        //CSV.writeCSV(save_route, tmp);
     }
     private static void check_overlap(List<List<String>> update_code, String save_route){
         List<List<String>> new_code_list = new ArrayList<>();
         List<List<String>> old_code_list = CSV.readCSV(save_route);
-        HashMap<String, String> old_code_list_Map_krx_name = ListToHashMap(old_code_list);
-        HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap_edit(old_code_list);
+        HashMap<String, String> old_code_list_Map_krx_name = ListToHashMap.listTohashMap(old_code_list,0,1);
+        HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap.listTohashMap(old_code_list,0,2);
         for(List<String> tmp : update_code){
             if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), "E_" + tmp.get(1)));
@@ -72,19 +70,5 @@ public class short_code_update {
         }
         short_list.add(new_code_list);
         CSV.writeCSV(save_route, new_code_list);
-    }
-    private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
-        HashMap<String, String> tmp = new HashMap<>();
-        for(List<String> line : input_list){
-            tmp.put(line.get(0), line.get(1));
-        }
-        return tmp;
-    }
-    private static HashMap<String, String> ListToHashMap_edit(List<List<String>> input_list){
-        HashMap<String, String> tmp = new HashMap<>();
-        for(List<String> line : input_list){
-            tmp.put(line.get(0), line.get(2));
-        }
-        return tmp;
     }
 }
