@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,13 +28,12 @@ public class price_update {
         HashMap<String, String> kospi_integraion_hashmap = ListToHashMap.listTohashMap(kospi_integration, 0, 1);
         HashMap<String, String> kosdak_integraion_hashmap = ListToHashMap.listTohashMap(kosdak_integration,0,1);
         //
-        api_read(standard_date, kospi_api, save_route_for_kospi_price, kospi_integraion_hashmap);
-        api_read(standard_date, kosdak_api, save_route_for_kosdak_price, kosdak_integraion_hashmap);
+        api_read(kospi_api, save_route_for_kospi_price, kospi_integraion_hashmap);
+        api_read(kosdak_api, save_route_for_kosdak_price, kosdak_integraion_hashmap);
     }
-    private static boolean api_read(String date, String api_route, String save_route, HashMap<String, String> integration_hashmap) throws IOException, ParseException {
+    private static void api_read(String api_route, String save_route, HashMap<String, String> integration_hashmap) throws IOException, ParseException {
         String dart_code;
-        List<List<String>> save_file = new ArrayList<>();
-        String url_plus = api_route + date + "&AUTH_KEY=" + krx_api_key;
+        String url_plus = api_route + standard_date + "&AUTH_KEY=" + krx_api_key;
         URL url = new URL(url_plus);
         //
         BufferedReader bf;
@@ -43,7 +41,7 @@ public class price_update {
         try{
             bf = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         } catch(IOException e){
-            return false;
+            return;
         }
         //
         String response = bf.readLine();
@@ -54,7 +52,7 @@ public class price_update {
         //
         for (Object o : value) {
             try{
-                dart_code = integration_hashmap.get(((JSONObject) o).get("ISU_CD")).toString();
+                dart_code = integration_hashmap.get(((JSONObject) o).get("ISU_CD"));
             } catch (NullPointerException e){
                 continue;
             }
@@ -72,6 +70,5 @@ public class price_update {
                             ((JSONObject) o).get("LIST_SHRS").toString() // 상장주식수 349044336
                     )));
         }
-        return false;
     }
 }
