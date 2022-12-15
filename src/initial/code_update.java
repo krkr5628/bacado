@@ -1,6 +1,7 @@
 package initial;
 
 import load_save.CSV;
+import load_save.ListToHashMap;
 import org.json.simple.parser.ParseException;
 import org.xml.sax.SAXException;
 
@@ -24,8 +25,8 @@ public class code_update {
         // code_update
         dart_code_update.Dart_code_update();
         short_code_update.Short_code_update();
-        //
-        HashMap<String, String> dart_code = ListToHashMap(dart_code_update.dart_list);
+        // dart_code list to hashmap
+        HashMap<String, String> dart_code = ListToHashMap.listTohashMap(dart_code_update.dart_list, 1, 0); // corp_name, corp_cord
         // code_integration
         List<List<String>> kospi_integration = integration(short_code_update.short_list.get(0), dart_code,
                 save_route_for_kospi_integration, save_route_for_kospi_left);
@@ -36,15 +37,8 @@ public class code_update {
                 save_route_for_kospi_status, save_route_for_kospi_update_list);
         update_status.Update_status(kosdak_integration, "kosdak",
                 save_route_for_kodak_status, save_route_for_kodak_update_list);
-        // price update
+        //price update
         price_update.Price_update(kospi_integration, kosdak_integration);
-    }
-    private static HashMap<String, String> ListToHashMap(List<List<String>> input_list){
-        HashMap<String, String> tmp = new HashMap<>();
-        for(List<String> line : input_list){
-            tmp.put(line.get(1), line.get(0)); // corp_name, corp_cord
-        }
-        return tmp;
     }
     private static List<List<String>> integration(List<List<String>> short_code, HashMap<String, String> dart_code, String save_route_for_integration, String save_route_for_left){
         List<List<String>> integration_save_file = new ArrayList<>();
