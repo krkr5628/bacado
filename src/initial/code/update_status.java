@@ -27,23 +27,15 @@ public class update_status {
     }
     private static List<String> check(int idx, List<String> line, String market, String year){
         if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                + line.get(1) + "_price_history.csv"))) {
-            if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                    + line.get(1) + "_" + year + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
-                return List.of(line.get(1), year + "-" + half[end_half], "Y", "non_financial_company");
-            }
-            else{
-                return List.of(line.get(1), "2011-11011", "Y", "update");
-            }
+                + line.get(1) + "_" + year + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
+            return List.of(line.get(1), year + "-" + half[end_half], "non_financial_company");
+        }
+        else if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
+                + line.get(1) + "_financial_company.csv"))) {
+            return List.of(line.get(1), year + "-" + half[end_half], "financial_company");
         }
         else{
-            if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                    + line.get(1) + "_" + year + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
-                return List.of(line.get(1), year + "-" + half[end_half], "N", "non_financial_company");
-            }
-            else{
-                return List.of(line.get(1), "2011-11011", "N", "update");
-            }
+            return List.of(line.get(1), "2011-11011", "update");
         }
     }
 }
