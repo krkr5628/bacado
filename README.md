@@ -1,6 +1,5 @@
 [현재]
-1. 1일 트래픽 2만회 제한으로 재무제표 1일 200종목씩 다운로드 시작
-2. 지수 정보 10년치 다운로드 예정
+1. 1일 트래픽 2만회 제한으로 재무제표 1일 200종목씩 다운로드 시작(통신사 제한)
 3. 재무재표 매핑
 4. 주요 지표(per, pbr, rsi 등) 업데이트
 5. 대주주 목록 혹은 투자자 목록 업데이트
@@ -58,12 +57,16 @@
 7. 파일(src)
 (back_end) 자료 수집, 분석 자동화, 데이터베이스 관리
 - main
-- initial.code_update : corp_code와 ISU_SRT_CD 매칭 후 저장
-- initial.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
-- initial.short_code_update : 종목 리스트 및 가격 확인을 위한 ISU_SRT_CD 수집 후 저장
+- initial.initial_update : corp_code와 ISU_SRT_CD 매칭 후 저장
+- initial.code.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
+- initial.code.short_code_update : 종목 리스트 및 가격 확인을 위한 ISU_SRT_CD 수집 후 저장
+- initial.code.update_status : 업데이트 현황 파악
+- initial.code.update_list : 업데이트 필요한 종목만 분리하여 저장
+- initial.code.code_integration : dart코드 short코드 매칭
+- initial.index.index_update : 코스피200과 같은 주요 인덱스 가격 업데이트
+- initial.index.commodity_series_update : 선물 옵션 가격 업데이트
 - initial.price_update : 종목 일봉 업데이트
-- initial.update_status : 업데이트 현황 파악
-- initial.update_list : 업데이트 필요한 종목만 분리하여 저장
+- initial.check_update : 당일 어떤 항목을 언제 업데이트 했는지 기록
 - load_save.CSV : csv 파일 로드 및 저장, 경로지정, 파일명 지정, 파일 지정
 - load_save.make_directory : 신규 폴더 생성
 - load_save.file_name_change : 파일명 변경
@@ -73,7 +76,6 @@
 (frond_end)
 - Amazon LightSail
 - WordPress(검토중)
-
 
 8. 파일(scv)
 (list)
@@ -88,9 +90,11 @@
 - kosdak_status : 재무제표 업데이트 현황 및 비금융회사 구분 목록
 - kospi_update_list : 재무제표 업데이트가 필요한 회사 목록
 - kosdak_update_list : 재무제표 업데이트가 필요한 회사 목록
+- update_log : API를 통해 외부에서 받아오는 함수에 대한 요청 일자 기록(1일 1회 요청만 하기 위함)
 
-(kospi) 유가증권 2012 ~ 재무제표 (Dart_code 순으로 정리)
-(kosdak) 코스닥 2012 ~ 재무제표 (Dart_code 순으로 정리)
+(kospi) 유가증권 2012 ~ 재무제표, 가격지표 (Dart_code 순으로 정리)
+(kosdak) 코스닥 2012 ~ 재무제표, 가격지표 (Dart_code 순으로 정리)
+(index) 주요 인덱스 2012 ~ 가격지표
 
 9. 향후
 - 클라우드 플랫폼을 통한 데이터 분석
