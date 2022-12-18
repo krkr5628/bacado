@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CSV {
     public static List<List<String>> readCSV(String route) {
-        List<List<String>> stock_code = new ArrayList<>();
+        List<List<String>> tmp_file = new ArrayList<>();
         File csv = new File(route);
         BufferedReader br = null;
         String line;
@@ -20,7 +20,7 @@ public class CSV {
                 // 파일의 한 줄을 ,로 나누어 배열에 저장 후 리스트로 변환
                 String[] lineArr = line.split(",");
                 aLine = Arrays.asList(lineArr);
-                stock_code.add(aLine);
+                tmp_file.add(aLine);
             }
         } catch(FileNotFoundException e){
             e.printStackTrace();
@@ -35,31 +35,7 @@ public class CSV {
                 e.printStackTrace();
             }
         }
-        return stock_code;
-    }
-    public static void wirteCSVcontinue(String route, List<List<String>> file){
-        File csv = new File(route);
-        BufferedWriter bw = null;
-        try{
-            bw = new BufferedWriter((new FileWriter(csv, true)));
-            for (List<String> line : file) {
-                bw.write(make_line(line));
-                bw.newLine(); // 개행
-            }
-        } catch(FileNotFoundException e){
-            e.printStackTrace();
-        } catch(IOException e){
-            e.printStackTrace();
-        } finally {
-            try{
-                if(bw != null){
-                    bw.flush(); // 남아있는 데이터까지 보내준다.
-                    bw.close(); // 사용한 bufferedWriter를 닫아 준다.
-                }
-            } catch(IOException e){
-                e.printStackTrace();
-            }
-        }
+        return tmp_file;
     }
     public static void writeCSV(String route, List<List<String>> file){
         File csv = new File(route);
