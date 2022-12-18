@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CSV {
     public static List<List<String>> readCSV(String route) {
@@ -18,8 +19,8 @@ public class CSV {
             while((line = br.readLine()) != null){
                 List<String> aLine;
                 // 파일의 한 줄을 ,로 나누어 배열에 저장 후 리스트로 변환
-                String[] lineArr = line.split(",");
-                aLine = Arrays.asList(lineArr);
+                aLine = Arrays.asList(line.split(","));
+                //aLine = Arrays.stream(line.split(",")).collect(Collectors.toList());
                 tmp_file.add(aLine);
             }
         } catch(FileNotFoundException e){
