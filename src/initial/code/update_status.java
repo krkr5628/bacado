@@ -4,8 +4,10 @@ import load_save.CSV;
 import static initial.setting.*;
 import static initial.code.update_list.Update_list;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class update_status {
     public static void Update_status(List<List<String>> code_list, String market, String save, String save2){
         List<List<String>> status_tmp = update(code_list, market, Integer.toString(end_year));
         CSV.writeCSV(save, status_tmp);
-        Update_list(status_tmp, save2);
+        Update_list(save2, status_tmp);
     }
     private static List<List<String>> update(List<List<String>> code, String market, String year){
         List<List<String>> save = new ArrayList<>();
@@ -26,15 +28,25 @@ public class update_status {
     }
     private static List<String> check(List<String> line, String market, String year){
         if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                + line.get(1) + "_" + year + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
-            return List.of(line.get(1), line.get(2), year + "-" + half[end_half], "non_financial_company");
-        }
-        else if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
                 + line.get(1) + "_financial_company.csv"))) {
             return List.of(line.get(1), line.get(2), year + "-" + half[end_half], "financial_company");
         }
-        else{
-            return List.of(line.get(1), line.get(2), "2011-11011", "update");
+        String update_line = "2011-11011";
+        for(int j = 2012; j <= 2022; j++) {
+            for (int k = 0; k < 4; k++) {
+                if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
+                        + line.get(1) + "_" + year + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
+                    update_line = year + "_" + half[end_half];
+                }
+            }
         }
+        if(update_line.equals("2011-11011")){
+            return List.of(line.get(1), line.get(2), update_line, "update");
+        }
+        if(!update_line.equals("2011-11011") && !update_line.equals(standard_status)){
+            return List.of(line.get(1), line.get(2), update_line, "fs_differ");
+        }
+        return List.of(line.get(1), line.get(2), update_line, "non_financial_company");
+
     }
 }
