@@ -5,7 +5,6 @@ import load_save.CSV;
 import java.util.ArrayList;
 import java.util.List;
 
-import static initial.setting.standard_status;
 
 public class update_list {
     public static void Update_list(String route, List<List<String>> update_list){
