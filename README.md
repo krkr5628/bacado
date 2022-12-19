@@ -1,12 +1,7 @@
-[현재]
-1. 1일 트래픽 2만회 제한으로 재무제표 1일 200종목씩 다운로드 시작(통신사 제한)
-3. 재무재표 매핑
-4. 주요 지표(per, pbr, rsi 등) 업데이트
-5. 대주주 목록 혹은 투자자 목록 업데이트
-
 [고민]
-1. 신규 종목 혹은 변경 상장에 대한 해결책
-2. 특정 시간에 자동으로 1번만 작동 후 업데이트 현황 후 재시도
+1. Amazon LightSail Linux UI => 업데이트 현황 오류 현황 확인용
+2. 재무제표 업데이트 일정
+3. 재무제표 매핑의 한계
 
 # bacado
 1. 목적
@@ -63,15 +58,15 @@
 - initial.code.update_status : 업데이트 현황 파악
 - initial.code.update_list : 업데이트 필요한 종목만 분리하여 저장
 - initial.code.code_integration : dart코드 short코드 매칭
-- initial.index.index_update : 코스피200과 같은 주요 인덱스 가격 업데이트
+- initial.price.index_update : 코스피200과 같은 주요 인덱스 가격 업데이트
+- initial.price.price_update : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
 - initial.index.commodity_series_update : 선물 옵션 가격 업데이트
 - initial.price_update : 종목 일봉 업데이트
 - initial.check_update : 당일 어떤 항목을 언제 업데이트 했는지 기록
 - load_save.CSV : csv 파일 로드 및 저장, 경로지정, 파일명 지정, 파일 지정
-- load_save.make_directory : 신규 폴더 생성
-- load_save.file_name_change : 파일명 변경
 - load_save.ListToHashMap : 리스트 ⇒ hashmap 변경
-- export.ifrs_update : dart_code를 통해 재무제표를 받고 필요한 부분만 받아서 list 추출
+- tools.make_directory : 신규 폴더 생성
+- tools.file_name_change : 파일명 변경
 - caculation : 가치 계산 모음
 (frond_end)
 - Amazon LightSail
