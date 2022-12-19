@@ -26,10 +26,13 @@ public class index_update {
     private static final String save_route_for_krx_series = "D:\\Drive\\Code\\bacado\\csv\\index\\krx_series\\";
     private static final String save_route_for_kospi_series = "D:\\Drive\\Code\\bacado\\csv\\index\\kospi_series\\";
     private static final String save_route_for_kosdak_series = "D:\\Drive\\Code\\bacado\\csv\\index\\kosdak_series\\";
-    public static void Index_update() throws IOException, ParseException {
-            api_read(krx_series_api, save_route_for_krx_series);
-            api_read(kospi_series_api, save_route_for_kospi_series);
-            api_read(kosdak_series_api, save_route_for_kosdak_series);
+    public static void Index_update() throws IOException, ParseException, InterruptedException {
+        api_read(krx_series_api, save_route_for_krx_series);
+        Thread.sleep(100);
+        api_read(kospi_series_api, save_route_for_kospi_series);
+        Thread.sleep(100);
+        api_read(kosdak_series_api, save_route_for_kosdak_series);
+        Thread.sleep(100);
     }
     private static void api_read(String api_route, String save_route) throws IOException, ParseException {
         String url_plus = api_route + standard_date + "&AUTH_KEY=" + krx_api_key;
@@ -37,11 +40,7 @@ public class index_update {
         //
         BufferedReader bf;
         //
-        try{
-            bf = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
-        } catch(IOException e){
-            return;
-        }
+        bf = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8));
         //
         String response = bf.readLine();
         //
@@ -49,8 +48,11 @@ public class index_update {
         JSONObject myjson = (JSONObject)jsonParser.parse(response);
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
+        if(value.isEmpty()) return;
+        //
         for (Object o : value) {
             String tmp = ((JSONObject) o).get("IDX_NM").toString().replace(" ", "").replace("/","_");
+            //
             CSV.writeCSVoverride(save_route + "\\" + tmp + ".csv",
                     List.of(List.of(
                             ((JSONObject) o).get("BAS_DD").toString(), // 기준일자 20200414,
