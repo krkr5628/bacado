@@ -5,13 +5,13 @@ import load_save.CSV;
 import java.util.ArrayList;
 import java.util.List;
 
-import static initial.setting.current_status;
+import static initial.setting.standard_status;
 
 public class update_list {
-    public static void Update_list(List<List<String>> update_list, String route){
+    public static void Update_list(String route, List<List<String>> update_list){
         List<List<String>> save_file = new ArrayList<>();
         for(List<String> tmp : update_list){
-            if(!tmp.get(2).equals(current_status) && !tmp.get(3).equals("financial_company")){
+            if(!tmp.get(3).equals("update")){
                 save_file.add(tmp);
             }
         }
