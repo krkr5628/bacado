@@ -65,7 +65,7 @@ public class short_code_update {
             }
             // krx 코드 동일 - krx 한글명 다름
             else if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
-                new_code_list.add(List.of(tmp.get(0), tmp.get(1), "***" + tmp.get(1)));
+                new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
             }
             // krx 코드 및 krx 한글명 동일
             else{
