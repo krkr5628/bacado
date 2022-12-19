@@ -1,4 +1,4 @@
-package initial;
+package price;
 
 import static initial.setting.krx_api_key;
 import static initial.setting.standard_date;
@@ -35,20 +35,12 @@ public class price_update {
         LocalDate start_time = time.withYear(2012).withMonth(1).withDayOfMonth(4);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String today = time.format(formatter);
-        int time_cnt = 0;
-        while(true){
-            api_read(start_time.plusDays(time_cnt).format(formatter), kospi_api, save_route_for_kospi_price, kospi_integraion_hashmap);
-            Thread.sleep(100);
-            api_read(start_time.plusDays(time_cnt).format(formatter), kosdak_api, save_route_for_kosdak_price, kosdak_integraion_hashmap);
-            Thread.sleep(100);
-            time_cnt++;
-            System.out.println(start_time.plusDays(time_cnt).format(formatter));
-            if(start_time.plusDays(time_cnt).format(formatter).equals(today)) break;
-        }
+        api_read(kospi_api, save_route_for_kospi_price, kospi_integraion_hashmap);
+        api_read(kosdak_api, save_route_for_kosdak_price, kosdak_integraion_hashmap);
     }
-    private static void api_read(String date, String api_route, String save_route, HashMap<String, String> integration_hashmap) throws IOException, ParseException {
+    private static void api_read(String api_route, String save_route, HashMap<String, String> integration_hashmap) throws IOException, ParseException {
         String dart_code;
-        String url_plus = api_route + date + "&AUTH_KEY=" + krx_api_key;
+        String url_plus = api_route + standard_date + "&AUTH_KEY=" + krx_api_key;
         URL url = new URL(url_plus);
         //
         BufferedReader bf;
