@@ -21,19 +21,21 @@ public class ifrs_update {
     private static final String write_route_for_dart_code = "D:\\Drive\\Code\\bacado\\csv\\";
     private static boolean check_financial_company = true;
     private static int cnt = 0;
-    public static void download_financial(List<List<String>> code, String market) throws IOException, ParseException {
-        for(int i = 0; i < 215; i++){
+    public static void download_financial(List<List<String>> code, String market) throws IOException, ParseException, InterruptedException {
+        for(int i = 0; i < 216; i++){
             List<String> line = code.get(i);
             check_financial_company = true;
             for(int j = 2012; j <= end_year; j++) {
                 String year_w = Integer.toString(j);
                 for (int k = 0; k < 4; k++) {
                     connect_api(line.get(0), year_w, half[k], "CFS", market);
+                    Thread.sleep(100);
                     connect_api(line.get(0), year_w, half[k], "OFS", market);
+                    Thread.sleep(100);
                     if(j == end_year && k == end_half){
                         if(check_financial_company){
                             CSV.writeCSV(write_route_for_dart_code + market + "\\" + line.get(0) + "\\"
-                                    + line.get(0) + "_financial_history.csv", List.of(List.of("financial_history")));
+                                    + line.get(0) + "_financial_company.csv", List.of(List.of("financial_company")));
                         }
                         break;
                     }
