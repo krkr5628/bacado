@@ -10,6 +10,8 @@ public class code_integration {
     public static void Code_integration(List<List<String>> short_code, HashMap<String, String> dart_code, String save_route_for_integration, String save_route_for_left){
         List<List<String>> integration_save_file = new ArrayList<>();
         List<List<String>> integration_left_file = new ArrayList<>();
+        // krx 이름과 dart 호환명이 일치하면 integration으로 이동
+        // krx 이름이 바뀌거나 새로 추가된 코드중 dart 호환명과 일치하지 안을 경우 left로 이동
         for(List<String> tmp : short_code){
             if(dart_code.containsKey(tmp.get(2))){
                 integration_save_file.add(List.of(tmp.get(0), dart_code.get(tmp.get(2)), tmp.get(2)));
