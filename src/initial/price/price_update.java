@@ -1,9 +1,8 @@
-package price;
+package initial.price;
 
 import static initial.setting.krx_api_key;
 import static initial.setting.standard_date;
 
-import initial.check_update;
 import load_save.CSV;
 import load_save.ListToHashMap;
 
