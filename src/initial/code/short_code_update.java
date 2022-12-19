@@ -25,11 +25,12 @@ public class short_code_update {
     private static final String save_route_for_kospi_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
     private static final String save_route_for_kosdak_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_code.csv";
     public static List<List<List<String>>> short_list = new ArrayList<>();
-    public static void Short_code_update() throws IOException, ParseException {
-        api_read(kospi_api, save_route_for_kospi_code);
-        api_read(kosdak_api, save_route_for_kosdak_code);
+    public static boolean Short_code_update() throws IOException, ParseException {
+        boolean exist_kospi = api_read(kospi_api, save_route_for_kospi_code);
+        boolean exist_kosdak = api_read(kosdak_api, save_route_for_kosdak_code);
+        return exist_kospi || exist_kosdak;
     }
-    private static void api_read(String api_route, String save_route) throws IOException, ParseException {
+    private static boolean api_read(String api_route, String save_route) throws IOException, ParseException {
         List<List<String>> tmp = new ArrayList<>();
         String url_plus = api_route + standard_date + "&AUTH_KEY=" + krx_api_key;
         URL url = new URL(url_plus);
@@ -44,12 +45,15 @@ public class short_code_update {
         JSONObject myjson = (JSONObject)jsonParser.parse(response);
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
+        if(value.isEmpty()) return false;
+        //
         for (Object o : value) {
             tmp.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570
                     ((JSONObject) o).get("ISU_ABBRV").toString() // 한글 종목명 AJ네트웍스
             ));
         }
         check_overlap(tmp, save_route);
+        return true;
     }
     private static void check_overlap(List<List<String>> update_code, String save_route){
         List<List<String>> old_code_list = CSV.readCSV(save_route); // 기존 리스트
@@ -59,16 +63,16 @@ public class short_code_update {
         HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap.listTohashMap(old_code_list,0,2); //krx_code-호환 한글명
         //
         for(List<String> tmp : update_code){
-            // krx 코드 다름
             if(!old_code_list_Map_krx_name.containsKey(tmp.get(0))){
+                // krx 코드 다름
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
             }
-            // krx 코드 동일 - krx 한글명 다름
             else if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
+                // krx 코드 동일 - krx 한글명 다름
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
             }
-            // krx 코드 및 krx 한글명 동일
             else{
+                // krx 코드 및 krx 한글명 동일
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), old_code_list_Map_dart_name.get(tmp.get(0))));
             }
         }
