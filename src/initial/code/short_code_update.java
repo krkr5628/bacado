@@ -45,29 +45,34 @@ public class short_code_update {
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
         for (Object o : value) {
-            tmp.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570 한글 종목약명 AJ네트웍스
-                    ((JSONObject) o).get("ISU_ABBRV").toString(), // 한글 종목약명 AJ네트웍스
-                    ((JSONObject) o).get("ISU_ABBRV").toString() // DART 호환 가능 종목약명
+            tmp.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570
+                    ((JSONObject) o).get("ISU_ABBRV").toString() // 한글 종목명 AJ네트웍스
             ));
         }
         check_overlap(tmp, save_route);
     }
     private static void check_overlap(List<List<String>> update_code, String save_route){
-        List<List<String>> new_code_list = new ArrayList<>();
-        List<List<String>> old_code_list = CSV.readCSV(save_route);
-        HashMap<String, String> old_code_list_Map_krx_name = ListToHashMap.listTohashMap(old_code_list,0,1);
-        HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap.listTohashMap(old_code_list,0,2);
+        List<List<String>> old_code_list = CSV.readCSV(save_route); // 기존 리스트
+        List<List<String>> new_code_list = new ArrayList<>(); // 새로운 리스트
+        //
+        HashMap<String, String> old_code_list_Map_krx_name = ListToHashMap.listTohashMap(old_code_list,0,1); //krx_code-한글명
+        HashMap<String, String> old_code_list_Map_dart_name = ListToHashMap.listTohashMap(old_code_list,0,2); //krx_code-호환 한글명
+        //
         for(List<String> tmp : update_code){
-            if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
-                new_code_list.add(List.of(tmp.get(0), tmp.get(1), "E_" + tmp.get(1)));
-            }
-            else if (!old_code_list_Map_krx_name.containsKey(tmp.get(0))){
+            // krx 코드 다름
+            if(!old_code_list_Map_krx_name.containsKey(tmp.get(0))){
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
             }
+            // krx 코드 동일 - krx 한글명 다름
+            else if(old_code_list_Map_krx_name.containsKey(tmp.get(0)) && !old_code_list_Map_krx_name.get(tmp.get(0)).equals(tmp.get(1))){
+                new_code_list.add(List.of(tmp.get(0), tmp.get(1), "***" + tmp.get(1)));
+            }
+            // krx 코드 및 krx 한글명 동일
             else{
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), old_code_list_Map_dart_name.get(tmp.get(0))));
             }
         }
+        //
         short_list.add(new_code_list);
         CSV.writeCSV(save_route, new_code_list);
     }
