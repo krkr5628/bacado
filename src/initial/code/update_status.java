@@ -31,19 +31,19 @@ public class update_status {
                 + line.get(1) + "_financial_company.csv"))) {
             return List.of(line.get(1), line.get(2), "2011-11011", "financial_company");
         }
-        String update_line = "2011-11011";
+        String update_line = "2015-11011";
         for(int j = 2012; j <= 2022; j++) {
             for (int k = 0; k < 4; k++) {
                 if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                        + line.get(1) + "_" + j + "_" + half[end_half] + "_" + "OFS" + ".csv"))){
-                    update_line = j + "-" + half[end_half];
+                        + line.get(1) + "_" + j + "_" + half[k] + "_" + "OFS" + ".csv"))){
+                    update_line = j + "-" + half[k];
                 }
             }
         }
-        if(update_line.equals("2011-11011")){
+        if(update_line.equals("2015-11011")){
             return List.of(line.get(1), line.get(2), update_line, "update");
         }
-        if(!update_line.equals("2011-11011") && !update_line.equals(standard_status)){
+        if(!update_line.equals("2015-11011") && !update_line.equals(standard_status)){
             return List.of(line.get(1), line.get(2), update_line, "fs_differ");
         }
         return List.of(line.get(1), line.get(2), update_line, "non_financial_company");
