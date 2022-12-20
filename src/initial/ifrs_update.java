@@ -25,7 +25,7 @@ public class ifrs_update {
         for(int i = 0; i < 216; i++){
             List<String> line = code.get(i);
             check_financial_company = true;
-            for(int j = 2012; j <= end_year; j++) {
+            for(int j = 2015; j <= end_year; j++) {
                 String year_w = Integer.toString(j);
                 for (int k = 0; k < 4; k++) {
                     connect_api(line.get(0), year_w, half[k], "CFS", market);
