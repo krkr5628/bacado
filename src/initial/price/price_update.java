@@ -30,12 +30,10 @@ public class price_update {
         HashMap<String, String> kospi_integraion_hashmap = ListToHashMap.listTohashMap(kospi_integration, 0, 1);
         HashMap<String, String> kosdak_integraion_hashmap = ListToHashMap.listTohashMap(kosdak_integration,0,1);
         //
-        LocalDate time = LocalDate.now();
-        LocalDate start_time = time.withYear(2012).withMonth(1).withDayOfMonth(4);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-        String today = time.format(formatter);
+        System.out.println(standard_date + " price_update_start");
         api_read(kospi_api, save_route_for_kospi_price, kospi_integraion_hashmap);
         api_read(kosdak_api, save_route_for_kosdak_price, kosdak_integraion_hashmap);
+        System.out.println(standard_date + " price_update_finish");
     }
     private static void api_read(String api_route, String save_route, HashMap<String, String> integration_hashmap) throws IOException, ParseException {
         String dart_code;
