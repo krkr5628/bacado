@@ -22,26 +22,12 @@ CFS:연결재무제표, OFS:재무제표
 3분기보고서 : 11014
 사업보고서 : 11011
 
-BS : 재무상태표 
-IS : 손익계산서 
-CIS : 포괄손익계산서 
-CF : 현금흐름표 
+BS : 재무상태표 => 각 값
+CIS : 포괄손익계산서 => 4분기는 해당 년도 총합으로 표기
+CF : 현금흐름표  => 4분기는 해당 년도 총합으로 표기
+
+IS : 손익계산서
 SCE : 자본변동표
 
-"rcept_no":"20220308000798", 0
-"reprt_code":"11011", 1
-"bsns_year":"2021", 2
-"corp_code":"00126380", 3
-"sj_div":"BS", 4
-"sj_nm":"재무상태표", 5
-"account_id":"ifrs-full_CurrentAssets", 6
-"account_nm":"유동자산", 7
-"account_detail":"-", 8
-"thstrm_nm":"제 53 기", 9
-"thstrm_amount":"218163185000000", 10
-"frmtrm_nm":"제 52 기", 11
-"frmtrm_amount":"198215579000000", 12
-"bfefrmtrm_nm":"제 51 기", 13
-"bfefrmtrm_amount":"181385260000000", 14
-"ord":"1", 15
-"currency":"KRW" 16
+"
+
