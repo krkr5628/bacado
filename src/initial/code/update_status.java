@@ -35,7 +35,9 @@ public class update_status {
         for(int j = 2012; j <= 2022; j++) {
             for (int k = 0; k < 4; k++) {
                 if(Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
-                        + line.get(1) + "_" + j + "_" + half[k] + "_" + "OFS" + ".csv"))){
+                        + line.get(1) + "_" + j + "_" + half[k] + "_" + "OFS" + ".csv"))
+                        || Files.exists(Path.of(route_for_dart_code + market + "\\" + line.get(1) + "\\"
+                        + line.get(1) + "_" + j + "_" + half[k] + "_" + "CFS" + ".csv"))){
                     update_line = j + "-" + half[k];
                 }
             }
