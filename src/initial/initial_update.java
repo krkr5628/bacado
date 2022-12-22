@@ -47,6 +47,10 @@ public class initial_update {
                     save_route_for_kosdak_integration, save_route_for_kosdak_new, save_route_for_kosdak_left);
 
         }
+        if(false){
+            ifrs_update.download_financial(CSV.readCSV(save_route_for_kospi_update_list), "kospi");
+            ifrs_update.download_financial(CSV.readCSV(save_route_for_kodak_update_list), "kosdak");
+        }
         // 재무제표 현황 업데이트
         if(false){
             // code_status_update, code_update_list_update
