@@ -34,11 +34,12 @@ public class initial_update {
     public static void Code_update() throws IOException, ParserConfigurationException, SAXException, ParseException, InterruptedException {
         // 화 ~ 토 하루씩 한번 작동
         // 코드 업데이트
-        if(false){
+        // short_code update
+        short_code_update.Short_code_update();
+        // new_short_code가 old_short_code와 동일하면 작동 안함
+        if(short_code_update.same_short_code){
             // dart_code update
             dart_code_update.Dart_code_update();
-            // short_code update
-            short_code_update.Short_code_update();
             // kospi_code integration
             code_integration.Code_integration(dart_code_update.dart_list, short_code_update.short_list.get(0), "kospi",
                     save_route_for_kospi_integration, save_route_for_kospi_new, save_route_for_kospi_left);
@@ -47,11 +48,12 @@ public class initial_update {
                     save_route_for_kosdak_integration, save_route_for_kosdak_new, save_route_for_kosdak_left);
 
         }
+        // update_list가 존재하면 작동하도록 수정 필요
         if(false){
             ifrs_update.download_financial(CSV.readCSV(save_route_for_kospi_update_list), "kospi");
             ifrs_update.download_financial(CSV.readCSV(save_route_for_kodak_update_list), "kosdak");
         }
-        // 재무제표 현황 업데이트
+        // 재무제표 다운로드가 발생하면 작동
         if(false){
             // code_status_update, code_update_list_update
             update_status.Update_status(CSV.readCSV(save_route_for_kospi_integration ), "kospi",

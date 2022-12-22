@@ -25,6 +25,7 @@ public class short_code_update {
     private static final String save_route_for_kospi_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_code.csv";
     private static final String save_route_for_kosdak_code = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_code.csv";
     public static List<List<List<String>>> short_list = new ArrayList<>();
+    public static boolean same_short_code;
     public static void Short_code_update() throws IOException, ParseException {
         api_read(kospi_api, save_route_for_kospi_code);
         api_read(kosdak_api, save_route_for_kosdak_code);
@@ -44,8 +45,6 @@ public class short_code_update {
         JSONObject myjson = (JSONObject)jsonParser.parse(response);
         JSONArray value = (JSONArray)myjson.get("OutBlock_1");
         //
-        if(value.isEmpty()) return;
-        //
         for (Object o : value) {
             tmp.add(List.of(((JSONObject) o).get("ISU_SRT_CD").toString(), // 단축코드 095570
                     ((JSONObject) o).get("ISU_ABBRV").toString() // 한글 종목명 AJ네트웍스
@@ -55,6 +54,8 @@ public class short_code_update {
 
     }
     private static void check_overlap(List<List<String>> update_code, String save_route){
+        same_short_code  = false;
+        //
         List<List<String>> old_code_list = CSV.readCSV(save_route); // 기존 리스트
         List<List<String>> new_code_list = new ArrayList<>(); // 새로운 리스트
         //
@@ -67,6 +68,7 @@ public class short_code_update {
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), old_code_list_Map_dart_name.get(tmp.get(0))));
             }
             else{
+                same_short_code = true;
                 // krx 코드 다름
                 // krx 코드 동일 - krx 한글명 다름
                 new_code_list.add(List.of(tmp.get(0), tmp.get(1), tmp.get(1)));
