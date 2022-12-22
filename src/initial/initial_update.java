@@ -6,7 +6,6 @@ import initial.code.short_code_update;
 import initial.code.update_status;
 import initial.price.price_update;
 import load_save.CSV;
-import load_save.ListToHashMap;
 
 import org.json.simple.parser.ParseException;
 import org.xml.sax.SAXException;
@@ -14,7 +13,6 @@ import initial.price.index_update;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class initial_update {
     private static final String save_route_for_updage_log = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
