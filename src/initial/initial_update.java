@@ -4,52 +4,65 @@ import initial.code.code_integration;
 import initial.code.dart_code_update;
 import initial.code.short_code_update;
 import initial.code.update_status;
-import initial.index.index_update;
+import initial.price.price_update;
 import load_save.CSV;
 import load_save.ListToHashMap;
 
 import org.json.simple.parser.ParseException;
 import org.xml.sax.SAXException;
+import initial.price.index_update;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 public class initial_update {
     private static final String save_route_for_updage_log = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
+    // 매핑 코드
     private static final String save_route_for_kospi_integration = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_integration.csv";
     private static final String save_route_for_kosdak_integration = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_integration.csv";
+    // 새로운 코드 집합
+    private static final String save_route_for_kospi_new = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_new.csv";
+    private static final String save_route_for_kosdak_new = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_new.csv";
+    // 매핑 불가능한 코드 => 우선주
     private static final String save_route_for_kospi_left = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_left.csv";
     private static final String save_route_for_kosdak_left = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_left.csv";
+    // 코드 업데이트 현황
     private static final String save_route_for_kospi_status = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_status.csv";
     private static final String save_route_for_kodak_status = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_status.csv";
+    // 업데이트 필요한 코드
     private static final String save_route_for_kospi_update_list = "D:\\Drive\\Code\\bacado\\csv\\list\\kospi_update_list.csv";
     private static final String save_route_for_kodak_update_list = "D:\\Drive\\Code\\bacado\\csv\\list\\kosdak_update_list.csv";
-    public static void Code_update() throws IOException, ParserConfigurationException, SAXException, ParseException {
-        // check_update 업데이트 중복 방지
-        if(check_update.Check_update(save_route_for_updage_log)){
-            //price update
-            price_update.Price_update(CSV.readCSV(save_route_for_kospi_integration), CSV.readCSV(save_route_for_kosdak_integration));
-            //index update
-            index_update.Index_update();
+    public static void Code_update() throws IOException, ParserConfigurationException, SAXException, ParseException, InterruptedException {
+        // 화 ~ 토 하루씩 한번 작동
+        // 코드 업데이트
+        if(false){
             // dart_code update
             dart_code_update.Dart_code_update();
             // short_code update
             short_code_update.Short_code_update();
-            // dart_code list to hashmap
-            HashMap<String, String> dart_code = ListToHashMap.listTohashMap(dart_code_update.dart_list, 1, 0); // corp_name, corp_cord
             // kospi_code integration
-            code_integration.Code_integration(short_code_update.short_list.get(0), dart_code,
-                    save_route_for_kospi_integration, save_route_for_kospi_left);
+            code_integration.Code_integration(dart_code_update.dart_list, short_code_update.short_list.get(0), "kospi",
+                    save_route_for_kospi_integration, save_route_for_kospi_new, save_route_for_kospi_left);
             // kosdak_code integration
-            code_integration.Code_integration(short_code_update.short_list.get(1), dart_code,
-                    save_route_for_kosdak_integration, save_route_for_kosdak_left);
+            code_integration.Code_integration(dart_code_update.dart_list, short_code_update.short_list.get(1), "kosdak",
+                    save_route_for_kosdak_integration, save_route_for_kosdak_new, save_route_for_kosdak_left);
+
         }
-        // code_status_update, code_update_list_update
-        update_status.Update_status(CSV.readCSV(save_route_for_kospi_integration ), "kospi",
-                save_route_for_kospi_status, save_route_for_kospi_update_list);
-        update_status.Update_status(CSV.readCSV(save_route_for_kosdak_integration), "kosdak",
-                save_route_for_kodak_status, save_route_for_kodak_update_list);
+        // 재무제표 현황 업데이트
+        if(false){
+            // code_status_update, code_update_list_update
+            update_status.Update_status(CSV.readCSV(save_route_for_kospi_integration ), "kospi",
+                    save_route_for_kospi_status, save_route_for_kospi_update_list);
+            update_status.Update_status(CSV.readCSV(save_route_for_kosdak_integration), "kosdak",
+                    save_route_for_kodak_status, save_route_for_kodak_update_list);
+        }
+        // 가격 업데이트
+        if(false){
+            //price update
+            price_update.Price_update(CSV.readCSV(save_route_for_kospi_integration), CSV.readCSV(save_route_for_kosdak_integration));
+            //index update
+            index_update.Index_update();
+        }
     }
 }
