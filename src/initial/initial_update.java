@@ -54,7 +54,7 @@ public class initial_update {
             ifrs_update.download_financial(CSV.readCSV(save_route_for_kodak_update_list), "kosdak");
         }
         // 재무제표 다운로드가 발생하면 작동
-        if(false){
+        if(true){
             // code_status_update, code_update_list_update
             update_status.Update_status(CSV.readCSV(save_route_for_kospi_integration ), "kospi",
                     save_route_for_kospi_status, save_route_for_kospi_update_list);
@@ -62,7 +62,7 @@ public class initial_update {
                     save_route_for_kodak_status, save_route_for_kodak_update_list);
         }
         // 가격 업데이트
-        if(false){
+        if(true){
             //price update
             price_update.Price_update(CSV.readCSV(save_route_for_kospi_integration), CSV.readCSV(save_route_for_kosdak_integration));
             //index update
