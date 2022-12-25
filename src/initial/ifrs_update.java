@@ -22,7 +22,7 @@ public class ifrs_update {
     private static boolean check_financial_company = true;
     private static int cnt = 0;
     public static void download_financial(List<List<String>> code, String market) throws IOException, ParseException, InterruptedException {
-        for(int i = 0; i < 218; i++){
+        for(int i = 0; i < code.size(); i++){
             List<String> line = code.get(i);
             check_financial_company = true;
             for(int j = 2015; j <= end_year; j++) {
