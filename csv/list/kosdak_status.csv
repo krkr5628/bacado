@@ -148,7 +148,7 @@
 00111227,대양제지,2022-11014,non_financial_company
 00111838,대원,2022-11014,non_financial_company
 00351807,대원미디어,2022-11014,non_financial_company
-00872063,대원산업,2011-11011,financial_company
+00673860,대원산업,2015-11011,update
 00384948,대유,2022-11014,non_financial_company
 01182578,대유에이피,2022-11014,non_financial_company
 00250997,대정화금,2022-11014,non_financial_company
@@ -223,7 +223,7 @@
 00604277,디에스케이,2011-11011,financial_company
 00660121,디에이테크놀로지,2022-11014,non_financial_company
 00303192,디에이피,2022-11014,non_financial_company
-00995993,디엑스앤브이엑스,2022-11014,non_financial_company
+00995993,DXVX,2022-11014,non_financial_company
 00642541,디엔에이링크,2022-11014,non_financial_company
 00569691,디엔에프,2022-11014,non_financial_company
 00361594,DMS,2022-11014,non_financial_company
@@ -327,6 +327,7 @@
 01407158,모코엠시스,2022-11014,non_financial_company
 00876908,모트렉스,2022-11014,non_financial_company
 00163318,모헨즈,2022-11014,non_financial_company
+00215976,MIT,2022-11014,non_financial_company
 00121507,무림SP,2022-11014,non_financial_company
 01190124,미디어젠,2022-11014,non_financial_company
 00526836,미래나노텍,2022-11014,non_financial_company
@@ -382,7 +383,7 @@
 01354740,브이씨,2022-11014,non_financial_company
 01027794,브이원텍,2022-11014,non_financial_company
 00150165,브이티지엠피,2022-11014,non_financial_company
-00173449,블루베리 NFT,2022-11014,non_financial_company
+00173449,블레이드 Ent,2022-11014,non_financial_company
 00238001,블루콤,2022-11014,non_financial_company
 01508855,블리츠웨이,2022-11014,non_financial_company
 00563518,비나텍,2022-11014,non_financial_company
@@ -403,6 +404,7 @@
 00524786,비엠티,2022-11014,non_financial_company
 01406618,비올,2022-11014,non_financial_company
 01014657,비즈니스온,2022-11014,non_financial_company
+00599595,BGF에코머티리얼즈,2022-11014,non_financial_company
 00154718,비츠로셀,2022-11014,non_financial_company
 00201432,비츠로시스,2022-11012,fs_differ
 00103644,비츠로테크,2022-11014,non_financial_company
@@ -529,6 +531,7 @@
 01390399,솔트웨어,2022-11014,non_financial_company
 00303794,쇼박스,2022-11014,non_financial_company
 00577016,수산아이앤티,2022-11014,non_financial_company
+00243979,수성샐바시온,2022-11014,non_financial_company
 01063954,수젠텍,2022-11014,non_financial_company
 01124653,슈프리마,2022-11014,non_financial_company
 01231786,슈프리마아이디,2022-11014,non_financial_company
@@ -812,6 +815,7 @@
 01108442,에치에프알,2022-11014,non_financial_company
 01029394,에코마케팅,2022-11014,non_financial_company
 00287812,에코바이오,2022-11014,non_financial_company
+00619640,에코앤드림,2022-11014,non_financial_company
 00870481,에코캡,2022-11014,non_financial_company
 00536541,에코프로,2022-11014,non_financial_company
 01160363,에코프로비엠,2022-11014,non_financial_company
@@ -1003,7 +1007,6 @@
 00863038,윌링스,2022-11014,non_financial_company
 01405585,윙스풋,2022-11014,non_financial_company
 01328639,윙입푸드,2022-11014,non_financial_company
-00127699,유네코,2022-11014,non_financial_company
 00260569,유니셈,2022-11014,non_financial_company
 00144243,유니슨,2022-11014,non_financial_company
 00408266,유니온커뮤니티,2022-11014,non_financial_company
@@ -1020,7 +1023,6 @@
 00411385,유비쿼스홀딩스,2022-11014,non_financial_company
 00173999,유성티엔에스,2022-11014,non_financial_company
 00144650,유신,2022-11014,non_financial_company
-00215976,UCI,2022-11014,non_financial_company
 00400121,유아이디,2022-11014,non_financial_company
 00256380,유아이엘,2022-11014,non_financial_company
 01670675,유안타제10호스팩,2011-11011,financial_company
@@ -1062,7 +1064,6 @@
 00390514,이루온,2022-11014,non_financial_company
 00694942,이미지스,2022-11014,non_financial_company
 00330424,이베스트투자증권,2011-11011,financial_company
-00243979,EV수성,2022-11014,non_financial_company
 00533924,이브이첨단소재,2022-11014,non_financial_company
 01135640,이삭엔지니어링,2022-11014,non_financial_company
 00454399,이상네트웍스,2022-11014,non_financial_company
@@ -1070,7 +1071,6 @@
 00273420,이스트소프트,2022-11014,non_financial_company
 00799070,이스트아시아홀딩스,2022-11014,non_financial_company
 00400060,이씨에스,2022-11012,fs_differ
-00619640,이엔드디,2022-11014,non_financial_company
 00530185,이엔에프테크놀로지,2022-11014,non_financial_company
 00389998,이엔코퍼레이션,2022-11014,non_financial_company
 00374020,이엘피,2022-11014,non_financial_company
@@ -1322,7 +1322,6 @@
 00187725,코콤,2022-11014,non_financial_company
 01614679,코텍,2011-11011,financial_company
 01364297,코퍼스코리아,2022-11014,non_financial_company
-00599595,코프라,2022-11014,non_financial_company
 01032404,콜마비앤에이치,2022-11014,non_financial_company
 01311055,쿠콘,2022-11014,non_financial_company
 01311286,퀀타매트릭스,2022-11014,non_financial_company
@@ -1393,6 +1392,7 @@
 00920379,티엘비,2022-11014,non_financial_company
 00261887,티엘아이,2022-11014,non_financial_company
 01335930,티움바이오,2022-11014,non_financial_company
+01301252,티이엠씨,2015-11011,update
 00201733,TJ미디어,2022-11014,non_financial_company
 00140061,TKG애강,2022-11014,non_financial_company
 00693554,티케이케미칼,2022-11014,non_financial_company
@@ -1555,6 +1555,7 @@
 00162911,한일사료,2022-11014,non_financial_company
 00809429,한일진공,2022-11014,non_financial_company
 00267979,한일화학,2022-11014,non_financial_company
+00156600,한주라이트메탈,2015-11011,update
 00202839,한창산업,2022-11014,non_financial_company
 00363592,한컴위드,2022-11014,non_financial_company
 00140566,한탑,2022-11014,non_financial_company

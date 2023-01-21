@@ -126,7 +126,7 @@
 00106395,금호전기,2022-11014,non_financial_company
 00481454,금호타이어,2022-11014,non_financial_company
 00106614,기신정기,2022-11011,fs_differ
-01664948,기아,2011-11011,financial_company
+00106641,기아,2015-11011,update
 00129420,까뮤이앤씨,2022-11014,non_financial_company
 00113492,깨끗한나라,2022-11014,non_financial_company
 00107066,남광토건,2022-11014,non_financial_company
@@ -436,8 +436,8 @@
 00361008,HSD엔진,2022-11014,non_financial_company
 00169048,HLB글로벌,2022-11014,non_financial_company
 00164645,HMM,2022-11014,non_financial_company
+00101044,에이프로젠바이오로직스,2022-11014,non_financial_company
 00152385,에이프로젠,2022-11014,non_financial_company
-00101044,에이프로젠제약,2022-11014,non_financial_company
 00684802,에이플러스에셋,2022-11014,non_financial_company
 00261443,엔씨소프트,2022-11014,non_financial_company
 01535257,엔에이치스팩19호,2011-11011,financial_company
@@ -648,7 +648,7 @@
 00547583,하나금융지주,2011-11011,financial_company
 00248974,하나제약,2022-11014,non_financial_company
 00269940,하나투어,2022-11014,non_financial_company
-01652129,하이브,2011-11011,financial_company
+01204056,하이브,2015-11011,update
 00435312,하이스틸,2022-11014,non_financial_company
 00150244,하이트진로,2022-11014,non_financial_company
 00148993,하이트진로홀딩스,2021-11014,fs_differ
@@ -685,7 +685,7 @@
 00828497,한미약품,2022-11014,non_financial_company
 00161693,한샘,2022-11014,non_financial_company
 00188089,한섬,2022-11014,non_financial_company
-01627309,한성기업,2011-11011,financial_company
+00161860,한성기업,2015-11011,update
 00728638,한세실업,2022-11014,non_financial_company
 00357360,한세엠케이,2022-11014,non_financial_company
 00161976,한세예스24홀딩스,2022-11014,non_financial_company
@@ -760,7 +760,7 @@
 00166519,화천기공,2022-11014,non_financial_company
 00166573,환인제약,2022-11014,non_financial_company
 00218575,황금에스티,2022-11014,non_financial_company
-00677918,효성,2011-11011,financial_company
+00117188,효성,2015-11011,update
 01316245,효성중공업,2022-11014,non_financial_company
 01316254,효성첨단소재,2022-11014,non_financial_company
 01316227,효성티앤씨,2022-11014,non_financial_company
