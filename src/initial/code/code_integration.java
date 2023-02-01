@@ -25,7 +25,7 @@ public class code_integration {
         HashMap<String, String> old_integration_code_hashmap = ListToHashMap.listTohashMap(CSV.readCSV(save_route_for_integration), 0, 2);
         for(List<String> tmp : short_code){
             if(dart_code_hashmap.containsKey(tmp.get(2))){
-                // 매칭된 모든 정목 추가
+                // 매칭된 모든 종목 추가
                 integration.add(List.of(tmp.get(0), dart_code_hashmap.get(tmp.get(2)), tmp.get(2)));
                 // 매칭된 것 중에서 신규 종목
                 if(!old_integration_code_hashmap.containsKey(tmp.get(0))){
