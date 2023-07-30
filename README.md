@@ -1,4 +1,4 @@
-#재개발 예정
+@재개발 예정
 
 #문제
 1. Amazon LightSail Linux UI => 업데이트 현황 오류 현황 확인용
