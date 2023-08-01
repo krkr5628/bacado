@@ -29,6 +29,8 @@
 - 국내
 - ~~미국 Nyse, Nasdaq : SEC?~~
 - ~~일본, 독일, 영국, 프랑스, 인도, 베트남 등 ⇒ FMD?~~
+  
+![image](https://github.com/krkr5628/bacado/assets/75410553/b57df649-f886-44f2-b7ce-cc073e2e7093)
 
 5. 주요 기능
 - 업데이트 : 주요 시장 별 1일 1회 주가 갱신, 재무제표 분기 갱신
