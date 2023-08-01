@@ -24,6 +24,9 @@
 - Bloomberg, REFINITIV ELKON, S&P CAPITAL IQ PLATFORM
 - 퀀트 킹, Koyfin, TradingView, 연합인포맥스
 
+# 구조
+![image](https://github.com/krkr5628/bacado/assets/75410553/b57df649-f886-44f2-b7ce-cc073e2e7093)
+
 # 특징
 - 웹기반 프로그램
 - 한국, 미국, 중국, 일본, 홍콩, 영국, 독일, 프랑스, 네덜란드 등 다양한 국가 정보
@@ -57,9 +60,6 @@
 - 커스텀 알림(이용권)
 - 개인 전문가 종목 추천(증권 플러스)
 - 투자 일임 회사 전용 서비스(증권 플러스)
-
-# 구조
-![image](https://github.com/krkr5628/bacado/assets/75410553/b57df649-f886-44f2-b7ce-cc073e2e7093)
 
 # 모듈1 : 종목 코드 및 재무제표 자동 갱신
 - main
