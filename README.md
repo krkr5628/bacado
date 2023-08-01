@@ -13,6 +13,9 @@
 
 💯 Solution : 원본 재무제표 표준화를 통해서 쉽게 활용할 수 있도록 만들자.
 
+# 상세 정보
+https://seongyeopchoi.notion.site/Bacado-Share-55da8163d33a42dab752973e4c0e996b?pvs=4
+
 # 사용기술
 - JAVA, Intellij, Github
 
