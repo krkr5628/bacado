@@ -61,7 +61,7 @@
 # 구조
 ![image](https://github.com/krkr5628/bacado/assets/75410553/b57df649-f886-44f2-b7ce-cc073e2e7093)
 
-# 모듈 : 자료 수집, 분석 자동화, 데이터베이스 관리
+# 모듈1 : 종목 코드 및 재무제표 자동 갱신
 - main
 - initial.initial_update : corp_code와 ISU_SRT_CD 매칭 후 저장
 - initial.code.dart_code_update : open_dart의 재무제표를 위한 zip 파일 corp_code 수집 후 csv 저장
@@ -80,16 +80,26 @@
 - tools.file_name_change : 파일명 변경
 - caculation : 가치 계산 모음
 
-# 파일(scv) : 2012년 ~ 자료
+# 모듈2 : 재무제표 매핑
+
+# 모듈3 : 기술 지표 계산
+
+# 모듈4 : 가치 평가 계산
+
+# 파일1(scv) : 종목코드 업데이트 및 맵핑
 - dart_code : open_dart corp_code 원본 파일(영업일 마다 업데이트)
 - kospi_code : krx kospi short_code 원본 파일(영업일 마다 업데이트, 기존 파일에 신규 코드만 추가)
 - kosdak_code : krx kosdak short_code 원본 파일(영업일 마다 업데이트, 기존 파일에 신규 코드만 추가)
 - kospi_integration : kospi corp_code와 short_code 연결되어 정리된 파일(비매칭 현황 직접 수정)
 - kosdak_integration : kosdak corp_code와 short_code 연결되어 정리된 파일(비매칭 현황 직접 수정)
-- kospi_left : kospi 매칭불가능한 회사 목록(영업일 확인 후 업데이트)
-- kosdak_left : kosdak 매칭불가능한 회사 목록(영업일 확인 후 업데이트)
+- kospi_left : kospi 맵핑불가능한 회사 목록(영업일 확인 후 업데이트)
+- kosdak_left : kosdak 맵핑불가능한 회사 목록(영업일 확인 후 업데이트)
+  
+# 파일2(scv) : 재무제표 현황 업데이트(2012년 ~ 자료)
 - kospi_status : 재무제표 업데이트 현황 및 비금융회사 구분 목록
 - kosdak_status : 재무제표 업데이트 현황 및 비금융회사 구분 목록
 - kospi_update_list : 재무제표 업데이트가 필요한 회사 목록
 - kosdak_update_list : 재무제표 업데이트가 필요한 회사 목록
 - update_log : API를 통해 외부에서 받아오는 함수에 대한 요청 일자 기록(1일 1회 요청만 하기 위함)
+
+#파일3(CSV) : 재무제표 목록(2012년 ~ 자료)
