@@ -2,6 +2,7 @@
 - ChaGPT 4.0에서 데이터 분석 및 시각화 기능이 제공되는데, 그러면 받아온 재무표에서 재무 도메인을 모아서 중복 제거를 한 후, 표준화에 도움을 얻을 수 있게 되었다.
 - 단, 맞는지 확인하기 위한 절차가 필수적이다.
 - 겸사 겸사 SEC 보고서에 대한 재무표를 받아올 방법도 생각해서 한번에 실행해보자.
+- World Qaunt의 컨셈을 참고하여
   
 # BACADO : 증권 가치 평가 서비스
 ❓ Problem1 : 애널리스트들이 분석 자료를 올리지만 어떠한 방식으로 계산하는지 알 수 없다.
@@ -25,8 +26,8 @@ https://seongyeopchoi.notion.site/Bacado-Share-55da8163d33a42dab752973e4c0e996b?
 - krx_open_api : 유가증권 종목기본정보, 코스닥 종목기본정보, 유가증권 일별매매정보, 코스닥 일별매매정보, KRX 시리즈 일별시세정보, KOSPI 시리즈 일별시세정보, KOSDAQ 시리즈 일별시세정보
 
 # 참고 회사
-- Bloomberg, REFINITIV ELKON, S&P CAPITAL IQ PLATFORM
-- 퀀트 킹, Koyfin, TradingView, 연합인포맥스
+- Bloomberg, REFINITIV ELKON, S&P CAPITAL IQ PLATFORM, Koyfin, TradingView, 연합인포맥스 => 정보 분석 프로그램 웹 기반 필수
+- World Qaunt Brain => 대중에게 공개하여 퀀트식을 받고 성능에 따라 일정 커미션 제공
 
 # 구조
 ![image](https://github.com/krkr5628/bacado/assets/75410553/b57df649-f886-44f2-b7ce-cc073e2e7093)
@@ -34,7 +35,6 @@ https://seongyeopchoi.notion.site/Bacado-Share-55da8163d33a42dab752973e4c0e996b?
 # 특징
 - 웹기반 프로그램
 - 한국, 미국, 중국, 일본, 홍콩, 영국, 독일, 프랑스, 네덜란드 등 다양한 국가 정보
-- 웹 - 모바일 하이브리드 형태
 - API 기반 거래 프로그램 연동
 
 # 기본 기능
@@ -46,24 +46,25 @@ https://seongyeopchoi.notion.site/Bacado-Share-55da8163d33a42dab752973e4c0e996b?
 - 커뮤니티
 
 # 특별 기능
-- 가치 투자 공식 및 간편 계산 기능
+- 다양한 가치 및 투자 지표 모든 값 실시간 계산 반영
+- 기본 재무 정보 및 위성 사진과 같은 특수 정보 제공
 - 백테스팅
 - 조건 검색(Refresh 1s, 5s, 10s, 1m..)
 - 증권사 레포트 요약 기능
 - 카카오톡 및 텔레그램을 통한 주요 정보 알림 서비스
-- 데이터 분석 기능
+- 개인 계좌 연동(API)
 
-# 커뮤니티 기능
+# 커뮤니티 기능(World Qaunt Brain)
 - 개인들의 분석 기법 공유(TradingVidw 유사)
-- 개인 포트폴리오 연동(API)
-- 매주 주가 혹은 지수 예측 대회 + 실전 투자 대회
+- 매주-월-분기-반기 기준 대회 진행
+- 개인형 펀드 구성 기능
   
 # 수익화
-- 백테스팅(개별)
-- API 데이터 판매(개별)
-- 커스텀 알림(이용권)
+- 백테스팅(건별)
+- API 형식 데이터 판매(개별)
 - 개인 전문가 종목 추천(증권 플러스)
-- 투자 일임 회사 전용 서비스(증권 플러스)
+- 개인 퀀트 계약 및 커미션 제공(World Quant Brain, 비공개형)
+- 연금 및 개인형 ETF와 펀드 생성 각 1개(공개형)
 
 # 모듈1 : 종목 코드 및 재무제표 자동 갱신
 - main
